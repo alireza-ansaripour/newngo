@@ -46,7 +46,7 @@ class News(models.Model):
 
 class Comment(models.Model):
     time = models.DateTimeField(auto_now_add=True)  # needs to be jalali datetime
-    news = models.ForeignKey(News)
+    news = models.ForeignKey(News, related_name='comments')
     name = models.CharField(max_length=50)
     text = models.TextField()
 

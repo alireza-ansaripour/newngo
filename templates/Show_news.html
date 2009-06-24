@@ -30,11 +30,12 @@
     {% autoescape off %}
         <div dir="rtl" style="background-color: #F2F2F2"> {{ news.text }}</div>
     {% endautoescape %}
-    {% for comment in comments %}
-    {% endfor %}
     <div class="row">
         <div class="col-md-6"></div>
         <div dir="rtl" class="col-md-6">
+            {% for comment in comments %}
+
+            {% endfor %}
             <h4>فرم نظرخواهی</h4>
             <img id="line" style="" src="{{ BASE_DIR }}/static/img/liine3.jpg" alt="">
             <form method="post" action="">

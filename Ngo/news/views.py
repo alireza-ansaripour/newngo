@@ -61,7 +61,7 @@ def show_article(request, id):
     date = persian_date(news)
     form = comment_form()
     title = news.title
-    comments = news.Comment_set
+    comments = news.comments.all()
     return render(request, 'Show_news.html', {'news': news, 'date': date, 'form': form, 'title': title, 'comments': comments})
 
 
