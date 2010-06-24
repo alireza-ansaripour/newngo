@@ -2,6 +2,7 @@ from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.utils.crypto import get_random_string
 from django.contrib.auth.decorators import user_passes_test
+import datetime
 
 from Ngo.forms import AddAdmin, AddExpert, Add_ngo, AddPicForm
 from Ngo.news.models import Photo
@@ -19,7 +20,7 @@ def add_admin(request):
         if request.method == 'POST':
             form = AddAdmin(request.POST)
             form.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
         else:
             form = AddAdmin()
             return render(request, 'ali.html', {'form': form})
@@ -31,7 +32,9 @@ def add_admin(request):
 def add_expert(request):
     if request.method == 'POST':
         form = AddExpert(request.POST)
-        form.save()
+        expert = form.save(commit=False)
+        # expert.last_login = datetime.date
+        expert.save()
     else:
         form = AddExpert()
     return render(request, 'ali.html', {'form': form})
@@ -42,9 +45,9 @@ def add_NGO(request):
     if request.method == 'POST':
         form = Add_ngo(request.POST)
         ngo = form.save(commit=False)
-        ngo.Website = 'http://176.9.177.17/ngo/'+ngo.latin_name
+        ngo.Website = 'http://127.0.0.1:8000/ngo/'+ngo.latin_name
         ngo.save()
-        return redirect('http://176.9.177.17/')
+        return redirect('http://127.0.0.1:8000/')
     else:
         form = Add_ngo()
         return render(request, 'ali.html', {'form': form})

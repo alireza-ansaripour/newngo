@@ -1,11 +1,11 @@
 {% if news.status == 'r' %}
     <div class="alert alert-warning alert-dismissible" role="alert">
-      <a href="http://176.9.177.17/delete/{{ news.random_int }}/d" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+      <a href="http://127.0.0.1:8000/delete/{{ news.random_int }}/d" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></a>
       {{ news.title }}
     </div>
 {% else %}
     <div class="alert alert-info alert-dismissible" role="alert">
-      <a href="http://176.9.177.17/delete/{{ news.random_int }}/d" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+      <a href="http://127.0.0.1:8000/delete/{{ news.random_int }}/d" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></a>
       {{ news.title }}
     </div>
 {% endif %}

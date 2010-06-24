@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% load date %}
 {% block page_title %}{{ news.titel }}{% endblock %}
 {% block nav_list %}
+
     {% if not user.is_authenticated %}
         <li><a href="#"></span> درباره ما</a></li>
         <li><a href="#"></span> خانه</a></li>
@@ -15,9 +17,9 @@
                         <li dir="rtl"><a href="d" style="float: right;">حذف</a></li>
                     </ul>
                 </li>
-                <li><a href="http://176.9.177.17/logout"></span> خروج</a></li>
-                <li><a href="http://176.9.177.17/shownews"></span> اخبار جدید</a></li>
-                <li><a href="http://176.9.177.17/logout"></span> ویرایش اخبار</a></li>
+                <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
+                <li><a href="http://127.0.0.1:8000/shownews"></span> اخبار جدید</a></li>
+                <li><a href="http://127.0.0.1:8000/logout"></span> ویرایش اخبار</a></li>
                 {% else %}
             {% endif %}
     {% endif %}
@@ -28,4 +30,21 @@
     {% autoescape off %}
         <div dir="rtl" style="background-color: #F2F2F2"> {{ news.text }}</div>
     {% endautoescape %}
+    {% for comment in comments %}
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div dir="rtl" class="col-md-6">
+            <h4>فرم نظرخواهی</h4>
+            <img id="line" style="" src="{{ BASE_DIR }}/static/img/liine3.jpg" alt="">
+            <form method="post" action="">
+                {% csrf_token %}
+                <h4>نام</h4>
+                <input type="text" class="form-control" name="name">
+                <h4>نظر</h4>
+                <textarea name="text" class="form-control"></textarea>
+                <input type="submit" value="ثبت">
+            </form>
+        </div>
+    </div>
 {% endblock %}

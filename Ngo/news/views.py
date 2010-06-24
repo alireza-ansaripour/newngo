@@ -4,8 +4,8 @@ from django.utils.crypto import get_random_string
 from django.contrib.auth.decorators import login_required, user_passes_test
 from Ngo import settings
 
-from Ngo.news.models import News, Photo
-from Ngo.forms import AddArticleForm, about_form, history_form
+from Ngo.news.models import News, Photo, Comment
+from Ngo.forms import AddArticleForm, about_form, history_form, comment_form
 from Ngo.templatetags.date import persian_date
 from Ngo.persons.models import Expert, NGO
 
@@ -14,7 +14,8 @@ def home(request):
     i_news = News.get_all_important_news()
     r_news = News.get_all_regular_news()
     # return HttpResponse(expert.id)
-    return render(request, 'home.html', {'i_news': i_news, 'r_news': r_news})
+    title = "سایت انجمن دوستی ایران و سهایر کشور ها"
+    return render(request, 'home.html', {'i_news': i_news, 'r_news': r_news, 'title': title})
 
 #
 
@@ -22,8 +23,6 @@ def home(request):
 @login_required(login_url='login')
 def create_article(request):
     if request.method == 'POST':
-        print(request.POST)
-        print(request.FILES)
         form = AddArticleForm(data=request.POST, files=request.FILES)
         if True:
             article = form.save(commit=False)
@@ -39,9 +38,9 @@ def create_article(request):
             article.continent = ngo.continent
             article.ngo = ngo
             article.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
         else:
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
     else:
         form = AddArticleForm()
     return render(request, 'new_article.html', {'form': form})
@@ -53,9 +52,17 @@ def edit(request):
 
 
 def show_article(request, id):
+    if request.method == "POST":
+        form = comment_form(request.POST)
+        comment = form.save(commit=False)
+        comment.news = News.objects.get(random_int=id)
+        comment.save()
     news = News.objects.get(random_int=id)
     date = persian_date(news)
-    return render(request, 'Show_news.html', {'news': news, 'date': date})
+    form = comment_form()
+    title = news.title
+    comments = news.Comment_set
+    return render(request, 'Show_news.html', {'news': news, 'date': date, 'form': form, 'title': title, 'comments': comments})
 
 
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
@@ -85,11 +92,11 @@ def show_news(request):
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
 def delete_news(request, id):
     News.objects.get(random_int=id).delete()
-    return redirect('http://176.9.177.17/editnews/')
+    return redirect('http://127.0.0.1:8000/editnews/')
 
 
 def user_home(request):
-    return redirect('http://176.9.177.17/')
+    return redirect('http://127.0.0.1:8000/')
 
 
 def filter_news(request, continent):
@@ -126,7 +133,7 @@ def request_ngo(request, name, kind):
             text = request.POST['about']
             ngo.country = text
         ngo.save()
-        return redirect('http://176.9.177.17/ngo/'+name+'/')
+        return redirect('http://127.0.0.1:8000/ngo/'+name+'/')
     ngo = NGO.objects.get(latin_name=name)
     can_edit = False
     if request.user.is_authenticated():
@@ -143,3 +150,5 @@ def request_ngo(request, name, kind):
         text = ngo.history
         form = history_form()
         return render(request, 'ngo/history.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit})
+
+

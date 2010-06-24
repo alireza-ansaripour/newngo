@@ -1,7 +1,7 @@
 from django import forms
 
 from Ngo.persons.models import Expert, Admin, NGO
-from Ngo.news.models import News, Photo
+from Ngo.news.models import News, Photo, Comment
 
 
 class SignupForm(forms.ModelForm):
@@ -16,7 +16,7 @@ class SignupForm(forms.ModelForm):
 class AddArticleForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
-        super().__init__()
+        super(AddArticleForm, self).__init__(*args, **kwargs)
         self.fields['text'].widget.attrs.update({'id': 'summernote'})
 
     class Meta:
@@ -29,8 +29,8 @@ class AddPicForm(forms.ModelForm):
         model = Photo
         fields = ['pic', 'text']
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super(AddPicForm, self).__init__(*args, **kwargs)
         self.fields['pic'].label = 'تصویر'
         self.fields['text'].label = 'توضیحات'
         self.fields['text'].widget.attrs.update({'dir': 'rtl'})
@@ -118,7 +118,7 @@ class Add_ngo(forms.ModelForm):
 
 class about_form(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super().__init__()
+        super(about_form, self).__init__(*args, **kwargs)
         self.fields['about'].widget.attrs.update({'id': 'summernote'})
 
     class Meta:
@@ -128,9 +128,21 @@ class about_form(forms.ModelForm):
 
 class history_form(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super().__init__()
+        super(history_form, self).__init__(*args, **kwargs)
         self.fields['history'].widget.attrs.update({'id': 'summernote'})
 
     class Meta:
         model = NGO
         fields = ['history']
+
+
+class comment_form(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['name', 'text']
+
+    def __int__(self, *args, **kwargs):
+            super(comment_form, self).__init__(*args, **kwargs)
+            self.fields['name'].label = 'نام'
+            self.fields['text'].label = 'متن'
