@@ -1,0 +1,9 @@
+{% extends 'ngo/germany.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+    <form  method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="ثبت">
+    </form>
+{% endblock %}

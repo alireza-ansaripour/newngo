@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load date %}
+{% block page_title %}{{ news.titel }}{% endblock %}
+{% block nav_list %}
+    {% if not user.is_authenticated %}
+        <li><a href="#"></span> درباره ما</a></li>
+        <li><a href="#"></span> خانه</a></li>
+        {% else %}
+            {% if user.is_superuser %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">دسته بندی <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ><a dir="rtl" href="i" style="float: right;">مهم</a></li>
+                        <li dir="rtl"><a href="r" style="float: right;">معمولی</a></li>
+                        <li dir="rtl"><a href="d" style="float: right;">حذف</a></li>
+                    </ul>
+                </li>
+                <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
+                <li><a href="http://127.0.0.1:8000/shownews"></span> اخبار جدید</a></li>
+                <li><a href="http://127.0.0.1:8000/logout"></span> ویرایش اخبار</a></li>
+                {% else %}
+            {% endif %}
+    {% endif %}
+{% endblock %}
+{% block body %}
+    <h4 style="color: blue;;" dir="rtl">{{ news.title }}</h4>
+    <div dir="rtl">{{ date }}</div>
+    {% autoescape off %}
+        <div dir="rtl" style="background-color: #F2F2F2"> {{ news.text }}</div>
+    {% endautoescape %}
+{% endblock %}

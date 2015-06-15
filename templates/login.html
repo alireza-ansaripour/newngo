@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    ورود
+{% endblock %}
+{% block body %}
+    <link rel="stylesheet" href="../static/css/signin.css">
+
+        <div class="row">
+
+                <form  method="post" action="" class="form-signin">
+                    {% csrf_token %}
+                    {% if not form.errors %}
+                        <input name="username" class="form-control" type="text" placeholder="نام کاربری">
+                        <input name="password" class="form-control" type="password" placeholder="گذرواژه">
+                        <button class="btn btn-lg btn-primary btn-block">ورود</button>
+                    {% else %}
+                        {% if not form.username.erros %}
+                            {% if not form.password.erros %}
+                                <div class="alert alert-danger" role="alert">نام کاربری یا گذرواژه نادرست است</div>
+                            {% endif %}
+                        {% endif %}
+                        {% if form.username.errors %}
+                            <div class="form-group has-warning">
+                              <label class="control-label" for="inputWarning1">نباید خالی باشد</label>
+                              <input name="username" class="form-control" type="text" id="inputWarning1">
+                            </div>
+                        {% else %}
+                            <input name="username" class="form-control" type="text">
+                        {% endif %}
+                        {% if form.password.errors %}
+                            <div class="form-group has-warning">
+                              <label class="control-label" for="inputWarning2">نباید خالی باشد</label>
+                              <input name="password" class="form-control" type="password" id="inputWarning2">
+                            </div>
+                        {% else %}
+                            <input name="password" class="form-control" type="password">
+                        {% endif %}
+
+                        <button class="btn btn-lg btn-primary btn-block">ورود</button>
+                    {% endif %}
+                </form>
+
+        </div>
+{% endblock %}

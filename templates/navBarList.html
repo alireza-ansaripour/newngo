@@ -1,0 +1,18 @@
+<nav class="navbar navbar-inverse col-md-12" height="10">
+    <div class="navbar-header" style="color: #ffffff;">
+        <h4> یکشنبه ۹ فروردین ۱۳۹۴</h4>
+    </div>
+        <div>
+            <ul class="nav navbar-nav navbar-right">
+                {% if not user.is_authenticated %}
+                    <li><a href="#"></span> درباره ما</a></li>
+                    <li><a href="#"></span> خانه</a></li>
+                    {% else %}
+                        {% if user.is_superuser %}
+                            <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
+                            {% else %}
+                        {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+</nav>

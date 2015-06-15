@@ -1,0 +1,15 @@
+{% load set_var %}
+{% if not flag  %}
+    {% include 'components/i_news_active.html' %}
+    {% set flag = 1 %}
+    {% else %}
+        <div class="item">
+            <a href="http://127.0.0.1:8000/article/{{ news.random_int }}">
+                <img src="media/{{ news.random_int }}.jpg" alt="Chania">
+                <div class="carousel-caption" id="caption">
+                    <h4>{{ news.title }} </h4>
+                    <p>{{ news.description }}</p>
+                </div>
+            </a>
+        </div>
+{% endif %}

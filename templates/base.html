@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load date %}
+{% include 'head.html' %}
+<title>{% block page_title %}{% endblock %}</title>
+<body>
+
+<div class="container" id="container">
+    <div class="row">
+        <img src="cinqueterre.jpg" class="img-rounded" alt="Cinque Terre" id="TOP_IMAGE" width="100%" height="150">
+    </div>
+    <div class="row">
+
+        <nav class="navbar navbar-inverse col-md-12" height="10">
+            <div class="navbar-header" style="color: #ffffff;">
+                <div style="margin-top: 12px" dir="rtl"> {{ a|jalali }}</div>
+            </div>
+                <div>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% block nav_list %}
+                            {% if not user.is_authenticated %}
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">آمریکا <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        {% for ngo in america %}
+                                            <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                                        {% endfor %}
+
+                                    </ul>
+                                </li>
+
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">آسیا <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        {% for ngo in asia %}
+                                            <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}"><div id="title">{{ ngo.name }}</div></a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">اروپا <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        {% for ngo in europe %}
+                                            <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">آفریقا <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        {% for ngo in africa %}
+                                            <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">استرالیا و اقیانوسیه<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        {% for ngo in australia %}
+                                            <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li><a href="http://127.0.0.1:8000/"></span> خانه</a></li>
+                                <li><a href="http://127.0.0.1:8000/login"><span>ورود</span></a> </li>
+                                {% else %}
+                                    {% if user.is_superuser %}
+                                        <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
+                                        <li><a href="http://127.0.0.1:8000/shownews"></span> اخبار جدید</a></li>
+                                        <li><a href="http://127.0.0.1:8000/editnews"></span> ویرایش اخبار</a></li>
+                                        <li><a href="http://127.0.0.1:8000/user/addexpert"></span> افزودن کارشناس</a></li>
+                                        <li><a href="http://127.0.0.1:8000/user/addngo"></span> افزودن سمن</a></li>
+                                        {% else %}
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">آمریکا <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    {% for ngo in america %}
+                                                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                                                    {% endfor %}
+
+                                                </ul>
+                                            </li>
+
+
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">آسیا <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    {% for ngo in asia %}
+                                                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}"><div id="title">{{ ngo.name }}</div></a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+
+
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">اروپا <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    {% for ngo in europe %}
+                                                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">آفریقا <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    {% for ngo in africa %}
+                                                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">استرالیا و اقیانوسیه<b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    {% for ngo in australia %}
+                                                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                            <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
+                                        <li><a href="http://127.0.0.1:8000/new"></span> اخبار جدید</a></li>
+                                        <li><a href="http://127.0.0.1:8000/"></span> خانه</a></li>
+
+                                    {% endif %}
+                            {% endif %}
+                        {% endblock %}
+                    </ul>
+                </div>
+        </nav>
+    </div>
+    {% block body %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
