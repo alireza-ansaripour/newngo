@@ -23,9 +23,8 @@ def home(request):
 @login_required(login_url='login')
 def create_article(request):
     if request.method == 'POST':
-        form = AddArticleForm(data=request.POST, files=request.FILES)
         if True:
-            article = form.save(commit=False)
+            article = News()
             unique_id = get_random_string()
             article.title_image = request.FILES['title_image']
             article.title_image.name = str(unique_id)+'.jpg'
