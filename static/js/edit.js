@@ -20,7 +20,7 @@ $("#click").click(function(){
             data:{
                 'ali':'reza'
             },
-            url: "http://127.0.0.1:8000/new/",
+            url: "http://176.9.177.17/new/",
             //processData: false,
             success: function(msg) {
                 alert(msg)
