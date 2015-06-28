@@ -18,15 +18,15 @@
                 <div>
                     <ul class="nav navbar-nav navbar-right">
                         {% if  user.is_authenticated %}
-                            <li><a href="http://176.9.177.17/logout">خروج</a></li>
+                            <li><a href="http://127.0.0.1:8000/logout">خروج</a></li>
                             {% else %}
-                            <li><a href="http://176.9.177.17/login">ورود</a></li>
+                            <li><a href="http://127.0.0.1:8000/login">ورود</a></li>
                         {% endif %}
                         <li><a>گالری تصاویر</a></li>
-                        <li><a href="http://176.9.177.17/ngo/{{ ngo.latin_name }}/history">آشنایی با انجمن</a></li>
-                        <li><a href="http://176.9.177.17/ngo/{{ ngo.latin_name }}/about">ارتباط با انجمن</a></li>
-                        <li><a href="http://176.9.177.17/ngo/{{ ngo.latin_name }}/">صفحه اصلی</a></li>
-                        <li><a href="http://176.9.177.17/">خانه</a></li>
+                        <li><a href="http://127.0.0.1:8000/ngo/{{ ngo.latin_name }}/history">آشنایی با انجمن</a></li>
+                        <li><a href="http://127.0.0.1:8000/ngo/{{ ngo.latin_name }}/about">ارتباط با انجمن</a></li>
+                        <li><a href="http://127.0.0.1:8000/ngo/{{ ngo.latin_name }}/">صفحه اصلی</a></li>
+                        <li><a href="http://127.0.0.1:8000/">خانه</a></li>
                     </ul>
                 </div>
         </nav>
@@ -49,7 +49,7 @@
                         <tr>
                             <th>
                                 <div align="right"> آخرین اخبار</div>
-                                <img id="line" style="" src="http://176.9.177.17/static/img/liine3.jpg" alt="">
+                                <img id="line" style="" src="http://127.0.0.1:8000/static/img/liine3.jpg" alt="">
                             </th>
                         </tr>
                     </thead>
@@ -60,7 +60,7 @@
                     </tbody>
                 </table>
                 <div align="right">درباره {{ ngo.name }}</div>
-                <img id="line" style="" src="http://176.9.177.17/static/img/liine3.jpg" alt="">
+                <img id="line" style="" src="http://127.0.0.1:8000/static/img/liine3.jpg" alt="">
                 {% autoescape off %}
                     {% if  not can_edit %}
                         <div dir="rtl"> {{ ngo.country }}</div>
@@ -79,7 +79,7 @@
 
     {% endblock %}
 </div>
-<script src="http://176.9.177.17/static/js/edit.js"></script>
+<script src="http://127.0.0.1:8000/static/js/edit.js"></script>
 <script>
         $('#summernote').text('{{ ngo.country }}');
 </script>

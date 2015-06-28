@@ -1,3 +1,5 @@
+body{
+}
 #news_image{
     float: right;
     height: 100%;
@@ -45,4 +47,11 @@ a{
       left: 0px;
       width: 70%;
       background-color: black;
+}
+.nav >li >a{
+    padding: 8px;
+}
+
+#news_container{
+    float: right;
 }

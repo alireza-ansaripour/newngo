@@ -2,11 +2,11 @@
 <html lang="en">
 {% load date %}
 {% include 'head.html' %}
-<body>
+<body background="http://127.0.0.1:8000/static/img/gray.jpg">
 
 <div class="container" id="container">
     <div class="row">
-        <img src="cinqueterre.jpg" class="img-rounded" alt="Cinque Terre" id="TOP_IMAGE" width="100%" height="150">
+        <img src="http://127.0.0.1:8000/static/img/title.jpg" class="img-rounded" alt="Cinque Terre" id="TOP_IMAGE" width="100%" height="150">
     </div>
     <div class="row">
 
@@ -65,15 +65,15 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
-                                <li><a href="http://176.9.177.17/"></span> خانه</a></li>
-                                <li><a href="http://176.9.177.17/login"><span>ورود</span></a> </li>
+                                <li><a href="http://127.0.0.1:8000/"></span> خانه</a></li>
+                                <li><a href="http://127.0.0.1:8000/login"><span>ورود</span></a> </li>
                                 {% else %}
                                     {% if user.is_superuser %}
-                                        <li><a href="http://176.9.177.17/logout"></span> خروج</a></li>
-                                        <li><a href="http://176.9.177.17/shownews"></span> اخبار جدید</a></li>
-                                        <li><a href="http://176.9.177.17/editnews"></span> ویرایش اخبار</a></li>
-                                        <li><a href="http://176.9.177.17/user/addexpert"></span> افزودن کارشناس</a></li>
-                                        <li><a href="http://176.9.177.17/user/addngo"></span> افزودن سمن</a></li>
+                                        <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
+                                        <li><a href="http://127.0.0.1:8000/shownews"></span> اخبار جدید</a></li>
+                                        <li><a href="http://127.0.0.1:8000/editnews"></span> ویرایش اخبار</a></li>
+                                        <li><a href="http://127.0.0.1:8000/user/addexpert"></span> افزودن کارشناس</a></li>
+                                        <li><a href="http://127.0.0.1:8000/user/addngo"></span> افزودن سمن</a></li>
                                         {% else %}
                                             <li class="dropdown">
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">آمریکا <b class="caret"></b></a>
@@ -122,9 +122,9 @@
                                                     {% endfor %}
                                                 </ul>
                                             </li>
-                                            <li><a href="http://176.9.177.17/logout"></span> خروج</a></li>
-                                        <li><a href="http://176.9.177.17/new"></span> اخبار جدید</a></li>
-                                        <li><a href="http://176.9.177.17/"></span> خانه</a></li>
+                                            <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
+                                        <li><a href="http://127.0.0.1:8000/new"></span> اخبار جدید</a></li>
+                                        <li><a href="http://127.0.0.1:8000/"></span> خانه</a></li>
 
                                     {% endif %}
                             {% endif %}
