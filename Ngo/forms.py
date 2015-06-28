@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import forms
 
 from Ngo.persons.models import Expert, Admin, NGO

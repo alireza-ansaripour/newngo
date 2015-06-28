@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 __author__ = 'root'
 from datetime import datetime
 from django import template

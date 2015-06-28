@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block body %}
-    <link rel="stylesheet" href="http://127.0.0.1:8000/static/css/editor.css">
+    <link rel="stylesheet" href="{{BASE_URL}}/static/css/editor.css">
 
 
-    <script src="http://127.0.0.1:8000/static/js/edit.js"></script>
+    <script src="{{BASE_URL}}/static/js/edit.js"></script>
     {% if form.errors %}
     sss
     {% endif %}
