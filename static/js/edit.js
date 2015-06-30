@@ -15,7 +15,7 @@ function summernote(){
             data:{
                 'about':text
             },
-            url: "http://127.0.0.1:8000/ngo/"+ngo+"/country/",
+            url: "http://176.9.177.17/ngo/"+ngo+"/country/",
             //processData: false,
             success: function(msg) {
                 alert('اطلاعات به روز شد');

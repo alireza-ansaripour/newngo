@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-from Ngo.persons.models import NGO
+from Ngo.persons.models import NGO, Expert
 
 
 def say_hello(request):
+    if request.user.is_authenticated():
+        if not request.user.is_superuser:
+            expert = Expert.objects.get(username = request.user.username)
         return {
             'america': NGO.objects.filter(continent='am'),
             'europe': NGO.objects.filter(continent='er'),
@@ -12,6 +15,7 @@ def say_hello(request):
             'australia': NGO.objects.filter(continent='au'),
             'asia': NGO.objects.filter(continent='as'),
             'say_hello': "Hello",
+            'expert': expert,
         }
 
 
