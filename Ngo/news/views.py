@@ -41,9 +41,6 @@ def create_article(request):
             article.ngo = ngo
             article.save()
             return redirect('http://176.9.177.17/')
-
-
-
         else:
             return redirect('http://176.9.177.17/')
     else:

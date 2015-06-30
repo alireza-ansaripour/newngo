@@ -15,7 +15,7 @@ class NGO(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return self.name.encode(encoding='utf-8')
 
     continent = models.CharField(max_length=2, choices=CATEGORIES)
     Website = models.CharField(max_length=50)
