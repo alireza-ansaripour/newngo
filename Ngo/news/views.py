@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
+import os
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.utils.crypto import get_random_string
 from django.contrib.auth.decorators import login_required, user_passes_test
-from Ngo import settings
+
+from Ngo.settings import BASE_DIR
 
 from Ngo.news.models import News, Photo, Comment
-from Ngo.forms import AddArticleForm, about_form, history_form, comment_form
+from Ngo.forms import AddArticleForm, about_form, history_form, comment_form, AddPicForm
 from Ngo.templatetags.date import persian_date
 from Ngo.persons.models import Expert, NGO
 
@@ -77,7 +79,10 @@ def update_news(request, id, status):
     if status != 'd':
         news.status = status
         news.save()
+        if status == 'a':
+            return show_news(request)
     else:
+        os.remove(BASE_DIR + '/media/' + news.random_int + '.jpg')
         news.delete()
     return show_new_news(request)
 
@@ -87,7 +92,6 @@ def show_news(request):
     r_news = News.get_all_regular_news()
     i_news = News.get_all_important_news()
     return render(request, 'edit_news.html', {'r_news': r_news, 'i_news': i_news})
-
 
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
 def delete_news(request, id):
@@ -116,7 +120,8 @@ def show_NGO(request, name):
             if ngo_name == name:
                 can_edit = True
     photos = Photo.objects.filter(ngo=ngo)
-    return render(request, 'ngo/germany.html', {'page_title': name, 'ngo': ngo, 'r_news': news, 'form': form, 'can_edit': can_edit, 'pics': photos})
+    pic_form = AddPicForm()
+    return render(request, 'ngo/germany.html', {'page_title': name, 'ngo': ngo, 'r_news': news, 'form': form, 'can_edit': can_edit, 'pics': photos, 'pic_form': pic_form})
 
 
 def request_ngo(request, name, kind):

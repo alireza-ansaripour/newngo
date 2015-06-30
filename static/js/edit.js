@@ -1,36 +1,29 @@
+function summernote(){
+        $('#summernote').summernote();
+        $('#submit').css('visibility', 'visible');
+        $('.note-editable').attr('dir','rtl');
 
-$(document).ready(function() {
-    $('#summernote').summernote();
-    $('.note-editable').attr('dir','rtl')
-
-
-
-});
-$("#click").click(function(){
-    var st = $('#summernote').code();
-    alert("sending")
-
-
-    $.ajax({
+    }
+    function send(ngo){
+        var text = $('#summernote').code();
+        $.ajax({
             type:"POST",
             beforeSend: function (request)
             {
                 request.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
             },
             data:{
-                'ali':'reza'
+                'about':text
             },
-            url: "http://127.0.0.1:8000/new/",
+            url: "http://127.0.0.1:8000/ngo/"+ngo+"/country/",
             //processData: false,
             success: function(msg) {
-                alert(msg)
+                alert('اطلاعات به روز شد');
+                $('#summernote').destroy();
+                 $('#submit').css('visibility', 'hidden');
             }
-    });
-
-
-
-
-});
+        });
+    }
 
 $('#submit').click(function(){
 

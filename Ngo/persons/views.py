@@ -6,7 +6,7 @@ import datetime
 
 from Ngo.forms import AddAdmin, AddExpert, Add_ngo, AddPicForm
 from Ngo.news.models import Photo
-from Ngo.persons.models import Admin, Expert
+from Ngo.persons.models import Admin, Expert,NGO
 
 
 def user_home(request):
@@ -49,8 +49,9 @@ def add_NGO(request):
         ngo.save()
         return redirect('http://127.0.0.1:8000/')
     else:
+        list = NGO.objects.all()
         form = Add_ngo()
-        return render(request, 'ali.html', {'form': form})
+        return render(request, 'ali.html', {'form': form, 'list': list})
 
 
 @user_passes_test(lambda u: u.is_staff, login_url='login')

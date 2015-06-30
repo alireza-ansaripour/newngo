@@ -7,6 +7,53 @@
     {% if not user.is_authenticated %}
         <li><a href="#"></span> درباره ما</a></li>
         <li><a href="#"></span> خانه</a></li>
+         <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">آمریکا <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    {% for ngo in america %}
+                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                    {% endfor %}
+
+                </ul>
+            </li>
+
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">آسیا <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    {% for ngo in asia %}
+                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}"><div id="title">{{ ngo.name }}</div></a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">اروپا <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    {% for ngo in europe %}
+                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">آفریقا <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    {% for ngo in africa %}
+                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">استرالیا و اقیانوسیه<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    {% for ngo in australia %}
+                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
         {% else %}
             {% if user.is_superuser %}
                 <li class="dropdown">
@@ -19,7 +66,7 @@
                 </li>
                 <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
                 <li><a href="http://127.0.0.1:8000/shownews"></span> اخبار جدید</a></li>
-                <li><a href="http://127.0.0.1:8000/logout"></span> ویرایش اخبار</a></li>
+                <li><a href="http://127.0.0.1:8000/editnews"></span> ویرایش اخبار</a></li>
                 {% else %}
             {% endif %}
     {% endif %}

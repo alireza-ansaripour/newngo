@@ -55,3 +55,55 @@ a{
 #news_container{
     float: right;
 }
+/* navbar */
+.navbar {
+    background-color: #428BCA;
+    border-color: #428BCA;
+    min-height: 39px;
+}
+
+/* title */
+.navbar .navbar-brand {
+    color: #777;
+}
+
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+    color: #5E5E5E;
+}
+
+/* link */
+.navbar .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li > a:focus {
+    color: #333;
+}
+
+.navbar .navbar-nav > .active > a,
+.navbar .navbar-nav > .active > a:hover,
+.navbar .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #A7A7A7;
+}
+
+.navbar .navbar-nav > .open > a,
+.navbar .navbar-nav > .open > a:hover,
+.navbar .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #D5D5D5;
+}
+
+@font-face {
+    font-family: "B Nazanin";
+    src: url(http://127.0.0.1:8000/static/fonts/BNazanin.ttf) format("truetype");
+}
+.navbar  .navbar-header{
+    padding-top: 8px;
+    font-size: 18px;
+}
+body {
+    font-family: "B Nazanin";
+}
