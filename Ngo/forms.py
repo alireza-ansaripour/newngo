@@ -19,6 +19,9 @@ class AddArticleForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(AddArticleForm, self).__init__(*args, **kwargs)
         self.fields['text'].widget.attrs.update({'id': 'summernote'})
+        self.fields['text'].widget.attrs.update({'dir': 'rtl'})
+        self.fields['title'].widget.attrs.update({'dir': 'rtl'})
+        self.fields['description'].widget.attrs.update({'dir': 'rtl'})
 
     class Meta:
         model = News
@@ -109,8 +112,9 @@ class AddExpert(forms.ModelForm):
 class Add_ngo(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(Add_ngo, self).__init__(*args, **kwargs)
-        self.fields['name'].label = 'کشور سمن به فارسی'
-        self.fields['latin_name'].label = 'کشور سمن به انگلیسی'
+        self.fields['name'].label = 'نام کشور'
+        self.fields['latin_name'].label = 'نام کشور به لاتین'
+        self.fields['continent'].label = 'قاره'
 
     class Meta:
         model = NGO
@@ -145,5 +149,6 @@ class comment_form(forms.ModelForm):
 
     def __int__(self, *args, **kwargs):
             super(comment_form, self).__init__(*args, **kwargs)
+            self.fields['text'].widget.attrs.update({'dir': 'rtl'})
             self.fields['name'].label = 'نام'
             self.fields['text'].label = 'متن'

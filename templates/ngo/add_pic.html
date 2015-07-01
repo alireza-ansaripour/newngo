@@ -1,9 +1,21 @@
 {% extends 'ngo/germany.html' %}
 {% load crispy_forms_tags %}
 {% block body %}
-    <form  method="post" action="" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" value="ثبت">
-    </form>
+    <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading" id="panel-header" dir="rtl" >افزودن تصویر
+                <span class="glyphicon glyphicon-picture" style="float: left"></span>
+                </div>
+                <div class="panel-body">
+                    <form dir="rtl" method="post" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="col-xs-2"></div> <input class="btn btn-primary col-xs-8" style="font-size: 20px" type="submit" value="ثبت">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

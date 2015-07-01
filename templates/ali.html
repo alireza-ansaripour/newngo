@@ -9,7 +9,7 @@
             <div class="panel panel-primary">
                 <div dir="rtl" class="panel-heading"> مشخصات</div>
                 <div class="panel-body">
-                    <form method="post" action="">
+                    <form method="post" action="" dir="rtl">
                         {% csrf_token %}
                         {{ form|crispy }}
                         <input type="submit" value="ثبت">
@@ -20,8 +20,19 @@
         </div>
         <div class="col-xs-4">
             <div class="panel panel-primary">
-                <div class="panel panel-heading">
-                    ngo list
+                <div class="panel panel-heading" dir="rtl">
+                    حذف انجمن
+                </div>
+                <div class="panel-body">
+                    <div class="sidebar mano" width="250" >
+                        <ul class="nav nav-sidebar" dir="rtl" id="list">
+                            {% for ngo in list %}
+                                <li>
+                                    <a href="{{ BASE_URL }}/user/delete/{{ ngo.latin_name }}/">{{ ngo.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

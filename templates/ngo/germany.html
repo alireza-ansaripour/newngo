@@ -1,90 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load date %}
-{% include 'head.html' %}
-{% load crispy_forms_tags %}
-<title>انجمن دوستی ایران و {{ page_title }}</title>
-<body background="http://176.9.177.17/static/img/gray.jpg">
-
-<div class="container" id="container">
-    <div class="row">
-        <img src="176.9.177.17/static/img/ngo_headers/germany.png" class="img-rounded" alt="Cinque Terre" id="TOP_IMAGE" width="100%" height="150">
-    </div>
-    <div class="row">
-
-        <nav class="navbar navbar-inverse col-md-12" height="10">
-            <div class="navbar-header" style="color: #ffffff;">
-                <div style="margin-top: 12px" dir="rtl"> {{ a|jalali }}</div>
+    {% load date %}
+    {% include 'head.html' %}
+    {% load crispy_forms_tags %}
+    <title>انجمن دوستی ایران و {{ page_title }}</title>
+    <body background="http://127.0.0.1:8000/static/img/gray.jpg">
+        <div class="container" id="container">
+            <div class="row">
+                <img src="http://127.0.0.1:8000/static/img/ngo_headers/{{ ngo.latin_name }}.png" class="img-rounded" alt="Cinque Terre" id="TOP_IMAGE" width="100%" height="150">
             </div>
-                <div>
-                    <ul class="nav navbar-nav navbar-right">
-                        {% if  user.is_authenticated %}
-                            <li><a href="http://176.9.177.17/logout">خروج</a></li>
-                            {% else %}
-                            <li><a href="http://176.9.177.17/login">ورود</a></li>
-                        {% endif %}
-                        <li><a>گالری تصاویر</a></li>
-                        <li><a href="http://176.9.177.17/ngo/{{ ngo.latin_name }}/history">آشنایی با انجمن</a></li>
-                        <li><a href="http://176.9.177.17/ngo/{{ ngo.latin_name }}/about">ارتباط با انجمن</a></li>
-                        <li><a href="http://176.9.177.17/ngo/{{ ngo.latin_name }}/">صفحه اصلی</a></li>
-                        <li><a href="http://176.9.177.17/">خانه</a></li>
-                    </ul>
-                </div>
-        </nav>
-    </div>
-    {% block body %}
-
-        <div class="row" >
-            <div class="col-md-4">
-                <div class="panel panel-primary">
-                    <div dir="rtl" class="panel-heading" id="panel-header">گالری تصاویر
-                        {% if can_edit %}
-                            <a href="#" data-toggle="modal"data-target="#add-pic" style="color: #ffffff" >(افزودن تصویر)</a>
-                            {% include 'ngo/add_pic_modal.html' %}
-                        {% endif %}
+            <div class="row">
+                <nav class="navbar navbar-inverse col-md-12" height="10">
+                    <div class="navbar-header" style="color: #ffffff;">
+                        <div dir="rtl"> {{ a|jalali }}</div>
                     </div>
-                    {% for pic in pics %}
-                        <div class="row"><div class="col-md-2"></div> {% include 'ngo/picture.html' %}<div class="col-md-1"></div> </div>
-                    {% endfor %}
-                </div>
+                        <div>
+                            <ul class="nav navbar-nav navbar-right">
+                                {% if  user.is_authenticated %}
+                                    <li><a href="http://127.0.0.1:8000/logout">خروج</a></li>
+                                    {% else %}
+                                    <li><a href="http://127.0.0.1:8000/login">ورود</a></li>
+                                {% endif %}
+                                <li><a href="http://127.0.0.1:8000/ngo/{{ ngo.latin_name }}/history">آشنایی با انجمن</a></li>
+                                <li><a href="http://127.0.0.1:8000/ngo/{{ ngo.latin_name }}/about">ارتباط با انجمن</a></li>
+                                <li><a href="http://127.0.0.1:8000/ngo/{{ ngo.latin_name }}/">صفحه اصلی</a></li>
+                                <li><a href="http://127.0.0.1:8000/">خانه</a></li>
+                            </ul>
+                        </div>
+                </nav>
             </div>
-            <div class="col-md-8">
-                <div class="panel panel-primary">
-                    <div class="panel-heading" id="panel-header" dir="rtl">آخرین اخبار</div>
-                    <div class="panel-body">
-                        <table border="0" class="col-md-12">
-                            <tbody>
-                                {% for news in r_news %}
-                                    {% include 'components/r_news.html' %}
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="panel panel-primary">
-                    <div dir="rtl" id="panel-header" class="panel-heading"> درباره {{ngo.name}}
-                     {% if can_edit %}
+            {% block body %}
 
-                         <a href="#" onclick="summernote()" style="color: #ffffff">(ویرایش)</a>
-                     {% endif %}
+                <div class="row" >
+                    <div class="col-md-4">
+                        {% include 'ngo/gallery.html' %}
+                        {% include 'components/links.html' %}
                     </div>
-                    <div class="panel-body">
-                        {% autoescape off %}
-                            <div id="summernote" dir="rtl">{{ ngo.country }}</div>
-                        {% endautoescape %}
-                        {% if can_edit %}
-                            <br>
-                            <a href="#" class="btn btn-primary" style="float: right;visibility: hidden" onclick="send('{{ ngo.latin_name }}')" id="submit">ثبت</a>
-                        {% endif %}
+                    <div class="col-md-8">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" id="panel-header" dir="rtl">آخرین اخبار</div>
+                            <div class="panel-body">
+                                <table border="0" class="col-md-12">
+                                    <tbody>
+                                        {% for news in r_news %}
+                                            {% include 'components/r_news.html' %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div dir="rtl" id="panel-header" class="panel-heading"> درباره {{ngo.name}}
+                             {% if can_edit %}
+
+                                 <a href="#" onclick="summernote()" style="color: #ffffff">(ویرایش)</a>
+                             {% endif %}
+                            </div>
+                            <div class="panel-body">
+                                {% autoescape off %}
+                                    <div id="summernote" dir="rtl">{{ ngo.country }}</div>
+                                {% endautoescape %}
+                                {% if can_edit %}
+                                    <br>
+                                    <a href="#" class="btn btn-primary" style="float: right;visibility: hidden" onclick="send('{{ ngo.latin_name }}')" id="submit">ثبت</a>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            {% endblock %}
         </div>
-
-    {% endblock %}
-</div>
-<script src="http://176.9.177.17/static/js/edit.js"></script>
-
-</div>
-</body>
+        <script src="http://127.0.0.1:8000/static/js/edit.js"></script>
+    </body>
 </html>

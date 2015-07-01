@@ -6,6 +6,7 @@ import datetime
 
 from Ngo.forms import AddAdmin, AddExpert, Add_ngo, AddPicForm
 from Ngo.news.models import Photo
+from Ngo.news.views import show_NGO
 from Ngo.persons.models import Admin, Expert,NGO
 
 
@@ -20,7 +21,7 @@ def add_admin(request):
         if request.method == 'POST':
             form = AddAdmin(request.POST)
             form.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
         else:
             form = AddAdmin()
             return render(request, 'ali.html', {'form': form})
@@ -45,9 +46,9 @@ def add_NGO(request):
     if request.method == 'POST':
         form = Add_ngo(request.POST)
         ngo = form.save(commit=False)
-        ngo.Website = 'http://176.9.177.17/ngo/'+ngo.latin_name
+        ngo.Website = 'http://127.0.0.1:8000/ngo/'+ngo.latin_name
         ngo.save()
-        return redirect('http://176.9.177.17/')
+        return redirect('http://127.0.0.1:8000/')
     else:
         list = NGO.objects.all()
         form = Add_ngo()
@@ -68,5 +69,12 @@ def add_pic(request):
         expert = Expert.objects.get(username=request.user.username)
         photo.ngo = expert.ngo
         photo.save()
+        return show_NGO(request, expert.ngo.latin_name)
+
     form = AddPicForm()
     return render(request, 'ngo/add_pic.html', {'form': form})
+
+
+def delete_NGO(request, name):
+    NGO.objects.get(latin_name=name).delete()
+    return add_NGO(request)

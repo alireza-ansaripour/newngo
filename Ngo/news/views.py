@@ -40,9 +40,9 @@ def create_article(request):
             article.continent = ngo.continent
             article.ngo = ngo
             article.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
         else:
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
     else:
         form = AddArticleForm()
     return render(request, 'new_article.html', {'form': form})
@@ -96,11 +96,11 @@ def show_news(request):
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
 def delete_news(request, id):
     News.objects.get(random_int=id).delete()
-    return redirect('http://176.9.177.17/editnews/')
+    return redirect('http://127.0.0.1:8000/editnews/')
 
 
 def user_home(request):
-    return redirect('http://176.9.177.17/')
+    return redirect('http://127.0.0.1:8000/')
 
 
 def filter_news(request, continent):
@@ -138,8 +138,10 @@ def request_ngo(request, name, kind):
             text = request.POST['about']
             ngo.country = text
         ngo.save()
-        return redirect('http://176.9.177.17/ngo/'+name+'/')
+        return redirect('http://127.0.0.1:8000/ngo/'+name+'/')
+
     ngo = NGO.objects.get(latin_name=name)
+    photos = Photo.objects.filter(ngo=ngo)
     can_edit = False
     if request.user.is_authenticated():
         if not request.user.is_superuser:
@@ -150,10 +152,10 @@ def request_ngo(request, name, kind):
     if kind == 'about':
         text = ngo.about
         form = about_form()
-        return render(request, 'ngo/about.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit})
+        return render(request, 'ngo/about.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos})
     if kind == 'history':
         text = ngo.history
         form = history_form()
-        return render(request, 'ngo/history.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit})
+        return render(request, 'ngo/history.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos})
 
 

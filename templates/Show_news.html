@@ -64,35 +64,81 @@
                         <li dir="rtl"><a href="d" style="float: right;">حذف</a></li>
                     </ul>
                 </li>
-                <li><a href="http://176.9.177.17/logout"></span> خروج</a></li>
-                <li><a href="http://176.9.177.17/shownews"></span> اخبار جدید</a></li>
-                <li><a href="http://176.9.177.17/editnews"></span> ویرایش اخبار</a></li>
+                <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
+                <li><a href="http://127.0.0.1:8000/shownews"></span> اخبار جدید</a></li>
+                <li><a href="http://127.0.0.1:8000/editnews"></span> ویرایش اخبار</a></li>
                 {% else %}
+                <li><a href="http://127.0.0.1:8000/ngo/{{ expert.ngo.latin_name }}/">صفحه انجمن</a> </li>
+                <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
+                <li><a href="http://127.0.0.1:8000/new"></span> اخبار جدید</a></li>
+                <li><a href="http://127.0.0.1:8000/"></span> خانه</a></li>
             {% endif %}
     {% endif %}
 {% endblock %}
 {% block body %}
-    <h4 style="color: blue;;" dir="rtl">{{ news.title }}</h4>
-    <div dir="rtl">{{ date }}</div>
-    {% autoescape off %}
-        <div dir="rtl" style="background-color: #F2F2F2"> {{ news.text }}</div>
-    {% endautoescape %}
-    <div class="row">
-        <div class="col-md-6"></div>
-        <div dir="rtl" class="col-md-6">
-            {% for comment in comments %}
-                {% include 'components/message.html' %}
-            {% endfor %}
-            <h4>فرم نظرخواهی</h4>
-            <img id="line" style="" src="{{ BASE_DIR }}/static/img/liine3.jpg" alt="">
-            <form method="post" action="">
-                {% csrf_token %}
-                <h4>نام</h4>
-                <input type="text" class="form-control" name="name">
-                <h4>نظر</h4>
-                <textarea name="text" class="form-control"></textarea>
-                <input type="submit" value="ثبت">
-            </form>
+
+    <div class="col-xs-3">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading" id="panel-header"><span class="glyphicon glyphicon-filter"></span><div style="float: right">دسته بندی مطالب</div></div>
+            <div class="panel-body">
+
+                <div class="sidebar mano" width="250" >
+                    <ul class="nav nav-sidebar" dir="rtl" id="list">
+                        <li><a href="news/as">آسیا</a></li>
+                        <li><a href="news/am">آمریکا</a></li>
+                        <li><a href="news/eu">اروپا</a></li>
+                        <li><a href="news/af">آفریقا</a></li>
+                        <li><a href="news/au">استرالیا و اقیانوسیه</a></li>
+                        <li><a href="#">قوانین و مقررات</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+
+            <div class="panel-heading" >
+                <span class="glyphicon glyphicon-link"></span>
+                <div style="float: right">لینک های مرتبط</div>
+            </div>
+            <div class="panel-body">
+                <img class="col-xs-12" src="{{ BASE_URL }}/static/img/links1.jpg">
+            </div>
         </div>
     </div>
+    <div class="col-xs-9">
+        <div class="panel panel-primary" >
+            <div class="panel-body">
+                <h4 style="color: blue;;" dir="rtl">{{ news.title }}</h4>
+                <div dir="rtl">{{ date }}</div>
+                {% autoescape off %}
+                    <div dir="rtl" > {{ news.text }}</div>
+                {% endautoescape %}
+            </div>
+        </div>
+        {% for comment in comments %}
+            {% include 'components/message.html' %}
+        {% endfor %}
+        <div class="panel panel-primary ">
+            <div class="panel-heading" id="panel-header" dir="rtl">نظرسنجی</div>
+            <div class="panel-body">
+                <form  method="post" action="">
+                    {% csrf_token %}
+                    <h4 dir="rtl">نام</h4>
+                    <input type="text" class="form-control" name="name">
+                    <h4 dir="rtl">نظر</h4>
+                    <textarea name="text" class="form-control"></textarea>
+                    <div class="row">
+                        <div class="col-xs-5"></div>
+                        <input type="submit" class="btn btn-primary col-xs-2"  value="ثبت" id="submit">
+                        <div class="col-xs-5"></div>
+                    </div>
+
+                </form>
+                <link rel="stylesheet" href="http://127.0.0.1:8000/static/css/news_page.css"/>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}

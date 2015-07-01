@@ -1,21 +1,28 @@
 
 {% extends 'ngo/germany.html' %}
 {% block body %}
-    <link rel="stylesheet" href="http://176.9.177.17/static/css/editor.css">
-    <script src="http://176.9.177.17/static/js/edit.js"></script>
-
-    <div dir="rtl">
-    <h2 style="color: blue">آشنایی با انجمن</h2>
+    <link rel="stylesheet" href="http://127.0.0.1:8000/static/css/editor.css">
+    <script src="http://127.0.0.1:8000/static/js/edit.js"></script>
+    <div class="col-xs-4">
+        {% include 'ngo/gallery.html' %}
+        {% include 'components/links.html' %}
+    </div>
+    <div dir="rtl" class="col-xs-8">
         {% autoescape off %}
-            {% if  not can_edit %}
-                {{ text }}
-                {% else %}
-                    <form action="" method="post">
-                        {% csrf_token %}
-                        {{ form }}
-                        <input type="submit" value="ثبت">
-                    </form>
-            {% endif %}
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <h2 style="color: blue">آشنایی با انجمن</h2>
+                    {% if  not can_edit %}
+                        {{ text }}
+                    {% else %}
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ form }}
+                            <input type="submit" value="ثبت">
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
         {% endautoescape %}
     </div>
     <script>

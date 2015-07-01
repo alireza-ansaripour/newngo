@@ -5,15 +5,19 @@
 
 
     <script src="{{BASE_URL}}/static/js/edit.js"></script>
-    {% if form.errors %}
-    sss
-    {% endif %}
-    <form method="post" action="" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" id="submit">sub</button>
-    </form>
 
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <form   method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="col-xs-5"></div> <button class="btn btn-primary col-xs-2" style="font-size: 20px" type="submit" id="submit">ثبت</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        summernote();
+    </script>
 {% endblock %}
 
 

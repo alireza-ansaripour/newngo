@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="panel panel-primary">
+    <div  class="panel-heading" id="panel-header">
+        <span class="glyphicon glyphicon-picture"></span>
+        <span style="float: right"> گالری تصاویر</span>
+        {% if can_edit %}
+            <a href="{{ BASE_URL }}/user/add_pic" style="color: #ffffff" >(افزودن تصویر)</a>
+            {% include 'ngo/add_pic_modal.html' %}
+        {% endif %}
+    </div>
+    {% for pic in pics %}
+        <div class="row"><div class="col-md-2"></div> {% include 'ngo/picture.html' %}<div class="col-md-1"></div> </div>
+    {% endfor %}
+</div>
