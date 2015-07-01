@@ -2,10 +2,10 @@
 <html lang="en">
     {% load date %}
     {% include 'head.html' %}
-    <body background="http://127.0.0.1:8000/static/img/gray.jpg">
+    <body background="http://176.9.177.17/static/img/gray.jpg">
         <div class="container" id="container">
             <div class="row">
-                <img src="http://127.0.0.1:8000/static/img/title.jpg" class="img-rounded" alt="Cinque Terre" id="TOP_IMAGE" width="100%" height="150">
+                <img src="http://176.9.177.17/static/img/title.jpg" class="img-rounded" alt="Cinque Terre" id="TOP_IMAGE" width="100%" height="150">
             </div>
             <div class="row">
 
@@ -64,19 +64,19 @@
                                                 {% endfor %}
                                             </ul>
                                         </li>
-                                        <li><a href="http://127.0.0.1:8000/"></span> خانه</a></li>
+                                        <li><a href="http://176.9.177.17/"></span> خانه</a></li>
                                         {% else %}
                                             {% if user.is_superuser %}
-                                                <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
-                                                <li><a href="http://127.0.0.1:8000/shownews"></span> اخبار جدید</a></li>
-                                                <li><a href="http://127.0.0.1:8000/editnews"></span> ویرایش اخبار</a></li>
-                                                <li><a href="http://127.0.0.1:8000/user/addexpert"></span> افزودن کارشناس</a></li>
-                                                <li><a href="http://127.0.0.1:8000/user/addngo"></span>ویرایش انجمن ها</a></li>
+                                                <li><a href="http://176.9.177.17/logout"></span> خروج</a></li>
+                                                <li><a href="http://176.9.177.17/shownews"></span> اخبار جدید</a></li>
+                                                <li><a href="http://176.9.177.17/editnews"></span> ویرایش اخبار</a></li>
+                                                <li><a href="http://176.9.177.17/user/addexpert"></span> افزودن کارشناس</a></li>
+                                                <li><a href="http://176.9.177.17/user/addngo"></span>ویرایش انجمن ها</a></li>
                                                 {% else %}
-                                                <li><a href="http://127.0.0.1:8000/ngo/{{ expert.ngo.latin_name }}/">صفحه انجمن</a> </li>
-                                                <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
-                                                <li><a href="http://127.0.0.1:8000/new"></span> اخبار جدید</a></li>
-                                                <li><a href="http://127.0.0.1:8000/"></span> خانه</a></li>
+                                                <li><a href="http://176.9.177.17/ngo/{{ expert.ngo.latin_name }}/">صفحه انجمن</a> </li>
+                                                <li><a href="http://176.9.177.17/logout"></span> خروج</a></li>
+                                                <li><a href="http://176.9.177.17/new"></span> اخبار جدید</a></li>
+                                                <li><a href="http://176.9.177.17/"></span> خانه</a></li>
 
                                             {% endif %}
                                     {% endif %}
@@ -93,7 +93,7 @@
         <footer >
             <div class="col-xs-12" >
                 <p></p>
-                <p><a href="http://127.0.0.1:8000/login/">ورود اعضا</a> | <a href="#">قوانین</a> </p>
+                <p><a href="http://176.9.177.17/login/">ورود اعضا</a> | <a href="#">قوانین</a> </p>
                 <p>کلیه حقوق این سایت برای پایگاه اینترنتی انجمن دوستی ایران و سایر کشور ها است</p>
             </div>
         </footer>
