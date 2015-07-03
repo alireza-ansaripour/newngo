@@ -1,14 +1,14 @@
+from django.core.files import File
 from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.utils.crypto import get_random_string
 from django.contrib.auth.decorators import user_passes_test
 import datetime
 
-from Ngo.forms import AddAdmin, AddExpert, Add_ngo, AddPicForm
+from Ngo.forms import AddAdmin, AddExpert, Add_ngo, AddPicForm, flagForm
 from Ngo.news.models import Photo
 from Ngo.news.views import show_NGO
-from Ngo.persons.models import Admin, Expert,NGO
-
+from Ngo.persons.models import Admin, Expert, NGO
 
 def user_home(request):
     pass
@@ -33,9 +33,9 @@ def add_admin(request):
 def add_expert(request):
     if request.method == 'POST':
         form = AddExpert(request.POST)
-        expert = form.save(commit=False)
-        # expert.last_login = datetime.date
-        expert.save()
+        if form.is_valid():
+            expert = form.save(commit=False)
+            expert.save()
     else:
         form = AddExpert()
     return render(request, 'ali.html', {'form': form})
@@ -43,22 +43,26 @@ def add_expert(request):
 
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
 def add_NGO(request):
+    list = None
     if request.method == 'POST':
-        form = Add_ngo(request.POST)
-        ngo = form.save(commit=False)
-        ngo.Website = 'http://176.9.177.17/ngo/'+ngo.latin_name
-        ngo.save()
-        return redirect('http://176.9.177.17/')
+        form = Add_ngo(request.POST, request.FILES)
+        if form.is_valid():
+            ngo = form.save(commit=False)
+            ngo.Website = 'http://176.9.177.17/ngo/'+ngo.latin_name
+            photo = ngo.flag
+            photo.name = ngo.latin_name + '.jpg'
+            ngo.flag = photo
+            ngo.save()
+            return redirect('http://176.9.177.17/')
     else:
         list = NGO.objects.all()
         form = Add_ngo()
-        return render(request, 'ali.html', {'form': form, 'list': list})
+    return render(request, 'ali.html', {'form': form, 'list': list})
 
 
 @user_passes_test(lambda u: u.is_staff, login_url='login')
 def add_pic(request):
     if request.method == 'POST':
-        # form = AddPicForm(request.POST, request.FILES)
         photo = Photo()
         pic = request.FILES['pic']
         name = get_random_string()

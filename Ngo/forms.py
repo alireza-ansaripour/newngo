@@ -5,6 +5,11 @@ from Ngo.persons.models import Expert, Admin, NGO
 from Ngo.news.models import News, Photo, Comment
 
 
+class flagForm(forms.ModelForm):
+    class Meta:
+        model = NGO
+        fields = ['flag']
+
 class SignupForm(forms.ModelForm):
     password1 = forms.CharField(widget=forms.PasswordInput(), label='رمز')
     password2 = forms.CharField(widget=forms.PasswordInput(), label='تکرار')
@@ -22,6 +27,10 @@ class AddArticleForm(forms.ModelForm):
         self.fields['text'].widget.attrs.update({'dir': 'rtl'})
         self.fields['title'].widget.attrs.update({'dir': 'rtl'})
         self.fields['description'].widget.attrs.update({'dir': 'rtl'})
+        self.fields['title'].label = 'عنوان'
+        self.fields['text'].label = 'متن خبر'
+        self.fields['description'].label = 'توضیحات'
+        self.fields['title_image'].label = 'تصویر عنوان'
 
     class Meta:
         model = News
@@ -38,8 +47,6 @@ class AddPicForm(forms.ModelForm):
         self.fields['pic'].label = 'تصویر'
         self.fields['text'].label = 'توضیحات'
         self.fields['text'].widget.attrs.update({'dir': 'rtl'})
-
-
 
 
 class AddAdmin(forms.ModelForm):
@@ -87,6 +94,9 @@ class AddExpert(forms.ModelForm):
         super(AddExpert, self).__init__(*args, **kwargs)
         self.fields['ngo'].label = 'سمن'
         self.fields['username'].label = 'نام کاربری'
+        for k, field in self.fields.items():
+            if 'required' in field.error_messages:
+                field.error_messages['required'] = 'نباید خالی باشد'
 
     def clean_password2(self):
         password1 = self.cleaned_data['password1']
@@ -115,10 +125,21 @@ class Add_ngo(forms.ModelForm):
         self.fields['name'].label = 'نام کشور'
         self.fields['latin_name'].label = 'نام کشور به لاتین'
         self.fields['continent'].label = 'قاره'
+        for k, field in self.fields.items():
+            if 'required' in field.error_messages:
+                field.error_messages['required'] = 'نباید خالی باشد'
 
     class Meta:
         model = NGO
-        fields = ['name', 'latin_name', 'continent']
+        fields = ['name', 'latin_name', 'continent', 'flag']
+
+    def clean_latin_name(self):
+        name = self.cleaned_data['latin_name']
+        if not name.isalpha():
+            raise forms.ValidationError('نام را به لاتین وارد کنید')
+        return name
+
+
 
 
 class about_form(forms.ModelForm):

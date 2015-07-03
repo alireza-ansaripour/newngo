@@ -23,6 +23,7 @@ class NGO(models.Model):
     history = models.TextField()
     about = models.TextField()
     country = models.TextField()
+    flag = models.FileField(upload_to=settings.MEDIA_ROOT + '/flags')
 
 
 class Expert(User):  # karshenas

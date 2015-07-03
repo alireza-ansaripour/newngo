@@ -16,7 +16,6 @@ from Ngo.persons.models import Expert, NGO
 def home(request):
     i_news = News.get_all_important_news()
     r_news = News.get_all_regular_news()
-    # return HttpResponse(expert.id)
     title = "سایت انجمن دوستی ایران و سهایر کشور ها"
     return render(request, 'home.html', {'i_news': i_news, 'r_news': r_news, 'title': title})
 
@@ -26,20 +25,33 @@ def home(request):
 @login_required(login_url='login')
 def create_article(request):
     if request.method == 'POST':
-        if True:
-            article = News()
+        form = AddArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            news = form.save(commit=False)
             unique_id = get_random_string()
-            article.title_image = request.FILES['title_image']
-            article.title_image.name = str(unique_id)+'.jpg'
-            article.random_int = unique_id
-            article.title = request.POST['title']
-            article.description = request.POST['description']
-            article.text = request.POST['text']
+            news.random_int = unique_id
+            photo = news.title_image
+            photo.name = unique_id + '.jpg'
             expert = Expert.objects.get(username=request.user.username)
             ngo = expert.ngo
-            article.continent = ngo.continent
-            article.ngo = ngo
-            article.save()
+            news.ngo = ngo
+            news.continent = ngo.continent
+            news.save()
+
+            # article = News()
+            # unique_id = get_random_string()
+            # article.title_image = request.FILES['title_image']
+            # article.title_image.name = str(unique_id)+'.jpg'
+            # article.random_int = unique_id
+            # article.title = request.POST['title']
+            # article.description = request.POST['description']
+            # article.text = request.POST['text']
+            # expert = Expert.objects.get(username=request.user.username)
+            # ngo = expert.ngo
+            # article.continent = ngo.continent
+            # article.ngo = ngo
+            # article.save()
+
             return redirect('http://176.9.177.17/')
         else:
             return redirect('http://176.9.177.17/')
@@ -120,8 +132,8 @@ def show_NGO(request, name):
             if ngo_name == name:
                 can_edit = True
     photos = Photo.objects.filter(ngo=ngo)
-    pic_form = AddPicForm()
-    return render(request, 'ngo/germany.html', {'page_title': name, 'ngo': ngo, 'r_news': news, 'form': form, 'can_edit': can_edit, 'pics': photos, 'pic_form': pic_form})
+    title = 'انجمن دوستی ایران و '+ngo.name
+    return render(request, 'ngo/germany.html', {'page_title': name, 'ngo': ngo, 'r_news': news, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
 
 
 def request_ngo(request, name, kind):
@@ -152,10 +164,12 @@ def request_ngo(request, name, kind):
     if kind == 'about':
         text = ngo.about
         form = about_form()
-        return render(request, 'ngo/about.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos})
+        title = 'انجمن دوستی ایران و '+ngo.name
+        return render(request, 'ngo/about.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
     if kind == 'history':
         text = ngo.history
         form = history_form()
-        return render(request, 'ngo/history.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos})
+        title = 'انجمن دوستی ایران و '+ngo.name
+        return render(request, 'ngo/history.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
 
 
