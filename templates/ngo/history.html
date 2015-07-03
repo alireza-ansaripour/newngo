@@ -11,22 +11,18 @@
         {% autoescape off %}
             <div class="panel panel-primary">
                 <div class="panel-body">
-                    <h2 style="color: blue">آشنایی با انجمن</h2>
-                    {% if  not can_edit %}
-                        {{ text }}
-                    {% else %}
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            {{ form }}
-                            <input type="submit" value="ثبت">
-                        </form>
-                    {% endif %}
+                    <h2 style="color: blue">آشنایی با انجمن
+                        {% if can_edit %}
+
+                            <a href="#summernote" onclick="summernote()" >(ویرایش)</a>
+                        {% endif %}
+                    </h2>
+                        <div id="summernote"> {{ text }}</div>
+                        <input type="button" style="visibility: hidden" id="submit" onclick="send('{{ ngo.latin_name }}','history')" value="ثبت">
                 </div>
             </div>
         {% endautoescape %}
     </div>
     <script>
-        $('#summernote').summernote();
-        $('#summernote').text('{{ text }}');
     </script>
 {% endblock %}

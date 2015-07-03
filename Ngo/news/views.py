@@ -68,9 +68,12 @@ def edit(request):
 def show_article(request, id):
     if request.method == "POST":
         form = comment_form(request.POST)
-        comment = form.save(commit=False)
-        comment.news = News.objects.get(random_int=id)
-        comment.save()
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.news = News.objects.get(random_int=id)
+            comment.save()
+            return redirect('http://176.9.177.17/article/'+id)
+
     news = News.objects.get(random_int=id)
     date = persian_date(news)
     form = comment_form()
@@ -137,20 +140,27 @@ def show_NGO(request, name):
 
 
 def request_ngo(request, name, kind):
-    if request.method == 'POST':
-        ngo = NGO.objects.get(latin_name=name)
-        if kind == 'about':
-            text = request.POST['about']
-            ngo.about = text
-        if kind == 'history':
-            text = request.POST['history']
-            ngo.history = text
 
-        if kind == 'country':
-            text = request.POST['about']
-            ngo.country = text
-        ngo.save()
-        return redirect('http://176.9.177.17/ngo/'+name+'/')
+    if request.method == 'POST':
+        if request.user.is_authenticated():
+            ngo = NGO.objects.get(latin_name=name)
+            expert = Expert.objects.get(username=request.user.username)
+
+            if expert.ngo == ngo:
+                if kind == 'about':
+                    text = request.POST['data']
+                    ngo.about = text
+                if kind == 'history':
+                    text = request.POST['data']
+                    ngo.history = text
+
+                if kind == 'country':
+                    text = request.POST['about']
+                    ngo.country = text
+                ngo.save()
+                return redirect('http://176.9.177.17/ngo/'+name+'/')
+        return redirect('127.0.0.1:8000/login/')
+
 
     ngo = NGO.objects.get(latin_name=name)
     photos = Photo.objects.filter(ngo=ngo)

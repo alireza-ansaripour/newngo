@@ -85,26 +85,18 @@
 
                 <div class="sidebar mano" width="250" >
                     <ul class="nav nav-sidebar" dir="rtl" id="list">
-                        <li><a href="news/as">آسیا</a></li>
-                        <li><a href="news/am">آمریکا</a></li>
-                        <li><a href="news/eu">اروپا</a></li>
-                        <li><a href="news/af">آفریقا</a></li>
-                        <li><a href="news/au">استرالیا و اقیانوسیه</a></li>
+                        <li><a href="http://176.9.177.17/news/as">آسیا</a></li>
+                        <li><a href="http://176.9.177.17/news/am">آمریکا</a></li>
+                        <li><a href="http://176.9.177.17/news/eu">اروپا</a></li>
+                        <li><a href="http://176.9.177.17/news/af">آفریقا</a></li>
+                        <li><a href="http://176.9.177.17/news/au">استرالیا و اقیانوسیه</a></li>
                         <li><a href="#">قوانین و مقررات</a> </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="panel panel-primary">
+        {% include 'components/links.html' %}
 
-            <div class="panel-heading" >
-                <span class="glyphicon glyphicon-link"></span>
-                <div style="float: right">لینک های مرتبط</div>
-            </div>
-            <div class="panel-body">
-                <img class="col-xs-12" src="{{ BASE_URL }}/static/img/links1.jpg">
-            </div>
-        </div>
     </div>
     <div class="col-xs-9">
         <div class="panel panel-primary" >
@@ -117,25 +109,25 @@
             </div>
         </div>
         {% for comment in comments %}
-            {% include 'components/message.html' %}
+            <div class="row"><div class="col-xs-4"></div> <div class="col-xs-8">{% include 'components/message.html' %}</div> </div>
         {% endfor %}
-        <div class="panel panel-primary ">
-            <div class="panel-heading" id="panel-header" dir="rtl">نظرسنجی</div>
-            <div class="panel-body">
-                <form  method="post" action="">
-                    {% csrf_token %}
-                    <h4 dir="rtl">نام</h4>
-                    <input type="text" class="form-control" name="name">
-                    <h4 dir="rtl">نظر</h4>
-                    <textarea name="text" class="form-control"></textarea>
-                    <div class="row">
-                        <div class="col-xs-5"></div>
-                        <input type="submit" class="btn btn-primary col-xs-2"  value="ثبت" id="submit">
-                        <div class="col-xs-5"></div>
-                    </div>
+        <div class="col-xs-4"></div>
+        <div class="col-xs-8">
+            <div class="panel panel-primary ">
+                <div class="panel-heading" id="panel-header" dir="rtl">نظرسنجی</div>
+                <div class="panel-body">
+                    <form  method="post" action="" dir="rtl">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="row">
+                            <div class="col-xs-5"></div>
+                            <input type="submit" class="btn btn-primary col-xs-2"  value="ثبت" id="submit">
+                            <div class="col-xs-5"></div>
+                        </div>
 
-                </form>
-                <link rel="stylesheet" href="http://176.9.177.17/static/css/news_page.css"/>
+                    </form>
+                    <link rel="stylesheet" href="http://176.9.177.17/static/css/news_page.css"/>
+                </div>
             </div>
         </div>
     </div>

@@ -92,7 +92,7 @@ class AddExpert(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(AddExpert, self).__init__(*args, **kwargs)
-        self.fields['ngo'].label = 'سمن'
+        self.fields['ngo'].label = 'انجمن دوستی'
         self.fields['username'].label = 'نام کاربری'
         for k, field in self.fields.items():
             if 'required' in field.error_messages:
@@ -125,6 +125,7 @@ class Add_ngo(forms.ModelForm):
         self.fields['name'].label = 'نام کشور'
         self.fields['latin_name'].label = 'نام کشور به لاتین'
         self.fields['continent'].label = 'قاره'
+        self.fields['flag'].label = 'پرجم کشور'
         for k, field in self.fields.items():
             if 'required' in field.error_messages:
                 field.error_messages['required'] = 'نباید خالی باشد'
@@ -168,8 +169,15 @@ class comment_form(forms.ModelForm):
         model = Comment
         fields = ['name', 'text']
 
-    def __int__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
             super(comment_form, self).__init__(*args, **kwargs)
             self.fields['text'].widget.attrs.update({'dir': 'rtl'})
+            self.fields['name'].widget.attrs.update({'dir': 'rtl'})
             self.fields['name'].label = 'نام'
             self.fields['text'].label = 'متن'
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        print('name '+name)
+        if name == '':
+            raise forms.ValidationError('نباید خالی باشد')
