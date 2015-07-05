@@ -135,7 +135,7 @@ def show_NGO(request, name):
             if ngo_name == name:
                 can_edit = True
     photos = Photo.objects.filter(ngo=ngo)
-    title = 'انجمن دوستی ایران و '+ngo.name
+    title = ngo.name
     return render(request, 'ngo/germany.html', {'page_title': name, 'ngo': ngo, 'r_news': news, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
 
 def request_ngo(request, name, kind):
@@ -170,12 +170,12 @@ def request_ngo(request, name, kind):
     if kind == 'about':
         text = ngo.about
         form = about_form()
-        title = 'انجمن دوستی ایران و '+ngo.name
+        title = ngo.name
         return render(request, 'ngo/about.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
     if kind == 'history':
         text = ngo.history
         form = history_form()
-        title = 'انجمن دوستی ایران و '+ngo.name
+        title = ngo.name
         return render(request, 'ngo/history.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
 
 
