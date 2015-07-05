@@ -14,9 +14,9 @@ function send(ngo){
             request.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
         },
         data:{
-            'about':text
+            'data':text
         },
-        url: "http://176.9.177.17/ngo/"+ngo+"/country/",
+        url: "http://127.0.0.1:8000/ngo/"+ngo+"/country/",
         //processData: false,
         success: function(msg) {
             alert('اطلاعات به روز شد');
@@ -38,7 +38,7 @@ function send(ngo,request){
 
             'data':text
         },
-        url: "http://176.9.177.17/ngo/"+ngo+"/history/",
+        url: "http://127.0.0.1:8000/ngo/"+ngo+"/"+request+"/",
         //processData: false,
         success: function(msg) {
             alert('اطلاعات به روز شد');

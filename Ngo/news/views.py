@@ -52,9 +52,9 @@ def create_article(request):
             # article.ngo = ngo
             # article.save()
 
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
         else:
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
     else:
         form = AddArticleForm()
     return render(request, 'new_article.html', {'form': form})
@@ -72,7 +72,7 @@ def show_article(request, id):
             comment = form.save(commit=False)
             comment.news = News.objects.get(random_int=id)
             comment.save()
-            return redirect('http://176.9.177.17/article/'+id)
+            return redirect('http://127.0.0.1:8000/article/'+id)
 
     news = News.objects.get(random_int=id)
     date = persian_date(news)
@@ -111,11 +111,11 @@ def show_news(request):
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
 def delete_news(request, id):
     News.objects.get(random_int=id).delete()
-    return redirect('http://176.9.177.17/editnews/')
+    return redirect('http://127.0.0.1:8000/editnews/')
 
 
 def user_home(request):
-    return redirect('http://176.9.177.17/')
+    return redirect('http://127.0.0.1:8000/')
 
 
 def filter_news(request, continent):
@@ -138,27 +138,23 @@ def show_NGO(request, name):
     title = 'انجمن دوستی ایران و '+ngo.name
     return render(request, 'ngo/germany.html', {'page_title': name, 'ngo': ngo, 'r_news': news, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
 
-
 def request_ngo(request, name, kind):
 
     if request.method == 'POST':
         if request.user.is_authenticated():
             ngo = NGO.objects.get(latin_name=name)
             expert = Expert.objects.get(username=request.user.username)
-
             if expert.ngo == ngo:
+                text = request.POST['data']
+                if kind == 'country':
+                    ngo.country = text
+                    print(text)
                 if kind == 'about':
-                    text = request.POST['data']
                     ngo.about = text
                 if kind == 'history':
-                    text = request.POST['data']
                     ngo.history = text
-
-                if kind == 'country':
-                    text = request.POST['about']
-                    ngo.country = text
                 ngo.save()
-                return redirect('http://176.9.177.17/ngo/'+name+'/')
+                return redirect('http://127.0.0.1:8000/ngo/'+name+'/')
         return redirect('127.0.0.1:8000/login/')
 
 

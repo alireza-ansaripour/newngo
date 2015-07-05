@@ -9,7 +9,7 @@
 
               </div>
             <div class="modal-body">
-                <form method="post" action="http://176.9.177.17/user/add_pic/">
+                <form method="post" action="http://127.0.0.1:8000/user/add_pic/">
                     {% csrf_token %}
                     {{ pic_form|crispy }}
                     <input type="submit" value="ثبت">

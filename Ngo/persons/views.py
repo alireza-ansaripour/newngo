@@ -21,7 +21,7 @@ def add_admin(request):
         if request.method == 'POST':
             form = AddAdmin(request.POST)
             form.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
         else:
             form = AddAdmin()
             return render(request, 'ali.html', {'form': form})
@@ -48,12 +48,12 @@ def add_NGO(request):
         form = Add_ngo(request.POST, request.FILES)
         if form.is_valid():
             ngo = form.save(commit=False)
-            ngo.Website = 'http://176.9.177.17/ngo/'+ngo.latin_name
+            ngo.Website = 'http://127.0.0.1:8000/ngo/'+ngo.latin_name
             photo = ngo.flag
             photo.name = ngo.latin_name + '.jpg'
             ngo.flag = photo
             ngo.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
     else:
         list = NGO.objects.all()
         form = Add_ngo()
