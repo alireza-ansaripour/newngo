@@ -5,7 +5,6 @@
 {% block nav_list %}
 
     {% if not user.is_authenticated %}
-        <li><a href="#"></span> درباره ما</a></li>
         <li><a href="#"></span> خانه</a></li>
          <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">آمریکا <b class="caret"></b></a>
@@ -102,7 +101,7 @@
         <div class="panel panel-primary" >
             <div class="panel-body">
                 <h4 style="color: blue;;" dir="rtl">{{ news.title }}</h4>
-                <div dir="rtl">{{ date }}</div>
+                <div dir="rtl">{{ news.date|jalali }}</div>
                 {% autoescape off %}
                     <div dir="rtl" > {{ news.text }}</div>
                 {% endautoescape %}

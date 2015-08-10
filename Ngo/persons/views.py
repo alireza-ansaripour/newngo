@@ -87,3 +87,12 @@ def delete_NGO(request, name):
         return HttpResponse('deleted')
     except:
         return HttpResponse('cannot delete')
+
+
+def delete_user(request, username):
+    try:
+        user = Expert.objects.get(username=username)
+        Expert.delete()
+        return HttpResponse('deleted')
+    except:
+        return HttpResponse('cannot delete')
