@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+    <div class="row">
+        <div class="col-xs-4">
+
+        </div>
+        <div class="col-xs-4">
+            <div class="panel panel-primary">
+                <div dir="rtl" class="panel-heading"> تغییر رمز</div>
+                <div class="panel-body">
+                    <form method="post" action="" dir="rtl" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+
+                        <input type="submit" value="ثبت">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-4">
+
+        </div>
+    </div>
+    <script>
+        function delete_ngo(name){
+            $.get('{{ BASE_URL }}/user/delete/'+name+'/',
+                function(data){
+                    if(data == "deleted"){
+                        parent=$('#'+name).parent()
+                        parent.remove()
+                    }
+                }
+            );
+        }
+
+    </script>
+{% endblock %}

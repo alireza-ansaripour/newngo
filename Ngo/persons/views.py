@@ -104,7 +104,9 @@ def change_password(request):
         form = ChangePasswordForm(request.POST)
         form.setUser(request.user)
         if form.is_valid():
-            request.user.set_password(form.cleaned_data['password'])
+            user = Expert.objects.get(username=request.user.username)
+            user.set_password(form.cleaned_data['password1'])
+            user.save()
     else:
         form = ChangePasswordForm()
-    return render(request, 'ali.html', {'form': form})
+    return render(request, 'change_pass.html', {'form': form})
