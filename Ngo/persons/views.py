@@ -1,5 +1,5 @@
 from django.core.files import File
-from django.http import HttpResponseNotFound
+from django.http import HttpResponseNotFound, HttpResponse
 from django.shortcuts import render, redirect
 from django.utils.crypto import get_random_string
 from django.contrib.auth.decorators import user_passes_test
@@ -21,7 +21,7 @@ def add_admin(request):
         if request.method == 'POST':
             form = AddAdmin(request.POST)
             form.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
         else:
             form = AddAdmin()
             return render(request, 'ali.html', {'form': form})
@@ -38,7 +38,8 @@ def add_expert(request):
             expert.save()
     else:
         form = AddExpert()
-    return render(request, 'ali.html', {'form': form})
+    list = Expert.objects.all().reverse()
+    return render(request, 'add_user.html', {'form': form, 'list': list})
 
 
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
@@ -48,14 +49,14 @@ def add_NGO(request):
         form = Add_ngo(request.POST, request.FILES)
         if form.is_valid():
             ngo = form.save(commit=False)
-            ngo.Website = 'http://176.9.177.17/ngo/'+ngo.latin_name
+            ngo.Website = 'http://127.0.0.1:8000/ngo/'+ngo.latin_name
             photo = ngo.flag
             photo.name = ngo.latin_name + '.jpg'
             ngo.flag = photo
             ngo.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
     else:
-        list = NGO.objects.all()
+        list = NGO.objects.all().order_by('name')
         form = Add_ngo()
     return render(request, 'ali.html', {'form': form, 'list': list})
 
@@ -80,5 +81,9 @@ def add_pic(request):
 
 
 def delete_NGO(request, name):
-    NGO.objects.get(latin_name=name).delete()
-    return add_NGO(request)
+    try:
+        ngo = NGO.objects.get(latin_name=name)
+        ngo.delete()
+        return HttpResponse('deleted')
+    except:
+        return HttpResponse('cannot delete')

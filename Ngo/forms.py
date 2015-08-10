@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from django import forms
 
+from django import forms
 from Ngo.persons.models import Expert, Admin, NGO
 from Ngo.news.models import News, Photo, Comment
 
@@ -9,6 +9,7 @@ class flagForm(forms.ModelForm):
     class Meta:
         model = NGO
         fields = ['flag']
+
 
 class SignupForm(forms.ModelForm):
     password1 = forms.CharField(widget=forms.PasswordInput(), label='رمز')
@@ -181,3 +182,12 @@ class comment_form(forms.ModelForm):
         print('name '+name)
         if name == '':
             raise forms.ValidationError('نباید خالی باشد')
+
+
+class country_form(forms.ModelForm):
+    class Meta:
+        model = NGO
+        fields = ['country']
+
+    def __init__(self, *args, **kwargs):
+        super(history_form, self).__init__(*args, **kwargs)

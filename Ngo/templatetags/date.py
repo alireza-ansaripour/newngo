@@ -12,8 +12,12 @@ class Output:
 
 
 @register.filter(name='jalali')
-def persian_date(request):
-    date = datetime.now()
+def persian_date(date):
+    print(date)
+    if date == '':
+        date = datetime.now()
+    else:
+        date = datetime(date.year, date.month, date.day)
     today = datetime(2015, 3, 21)
     days = (date-today).days
     day = 1

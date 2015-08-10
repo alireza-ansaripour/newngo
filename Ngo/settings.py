@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'Ngo.news',
     'Ngo.persons',
     'crispy_forms',
-
 )
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 TEMPLATE_CONTEXT_PROCESSORS = (

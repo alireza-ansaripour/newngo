@@ -22,19 +22,19 @@
         <div class="col-xs-4">
             <div class="panel panel-primary">
                 <div class="panel panel-heading" dir="rtl">
-                    {% block header %}ویرایش انجمن ها{% endblock %}
+                    {% block header %}ویرایش کاربران{% endblock %}
                 </div>
                 <div class="panel-body">
                     <div class="sidebar mano" width="250" >
                         <ul class="nav nav-sidebar" dir="rtl" id="list">
-                            {% for ngo in list %}
+                            {% for user in list %}
                                 <li>
                                     <a class="row">
-                                        <div id="{{ ngo.latin_name }}" onclick="delete_ngo('{{ ngo.latin_name }}')" class="col-sm-2 btn btn-danger">
+                                        <div id="{{ user.username }}" onclick="delete_ngo('{{ user.username }}')" class="col-sm-2 btn btn-danger">
                                             حذف
                                         </div>
                                         <div class="col-sm-2 btn btn-success">ویرایش</div>
-                                        <div class="col-xs-8">{{ ngo.name }}</div>
+                                        <div class="col-xs-8">{{ user.username }}</div>
                                     </a>
 {#                                    <a href="{{ BASE_URL }}/user/delete/{{ ngo.latin_name }}/">#}
 {#                                        {{ ngo }}#}

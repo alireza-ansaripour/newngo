@@ -16,15 +16,25 @@ from Ngo.persons.models import Expert, NGO
 def home(request):
     i_news = News.get_all_important_news()
     r_news = News.get_all_regular_news()
+    news_reverse = []
+
+    for news in reversed(i_news):
+        news_reverse.append(news)
+
+    i_news = news_reverse
+    news_reverse = []
+    for news in reversed(r_news):
+        news_reverse.append(news)
+
+    r_news = news_reverse
     title = "سایت انجمن دوستی ایران و سهایر کشور ها"
     return render(request, 'home.html', {'i_news': i_news, 'r_news': r_news, 'title': title})
-
-#
 
 
 @login_required(login_url='login')
 def create_article(request):
     if request.method == 'POST':
+
         form = AddArticleForm(request.POST, request.FILES)
         if form.is_valid():
             news = form.save(commit=False)
@@ -52,9 +62,9 @@ def create_article(request):
             # article.ngo = ngo
             # article.save()
 
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
         else:
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
     else:
         form = AddArticleForm()
     return render(request, 'new_article.html', {'form': form})
@@ -72,7 +82,7 @@ def show_article(request, id):
             comment = form.save(commit=False)
             comment.news = News.objects.get(random_int=id)
             comment.save()
-            return redirect('http://176.9.177.17/article/'+id)
+            return redirect('http://127.0.0.1:8000/article/'+id)
 
     news = News.objects.get(random_int=id)
     date = persian_date(news)
@@ -111,11 +121,11 @@ def show_news(request):
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
 def delete_news(request, id):
     News.objects.get(random_int=id).delete()
-    return redirect('http://176.9.177.17/editnews/')
+    return redirect('http://127.0.0.1:8000/editnews/')
 
 
 def user_home(request):
-    return redirect('http://176.9.177.17/')
+    return redirect('http://127.0.0.1:8000/')
 
 
 def filter_news(request, continent):
@@ -141,6 +151,7 @@ def show_NGO(request, name):
 def request_ngo(request, name, kind):
 
     if request.method == 'POST':
+
         if request.user.is_authenticated():
             ngo = NGO.objects.get(latin_name=name)
             expert = Expert.objects.get(username=request.user.username)
@@ -154,7 +165,7 @@ def request_ngo(request, name, kind):
                 if kind == 'history':
                     ngo.history = text
                 ngo.save()
-                return redirect('http://176.9.177.17/ngo/'+name+'/')
+                return redirect('http://127.0.0.1:8000/ngo/'+name+'/')
         return redirect('127.0.0.1:8000/login/')
 
 
