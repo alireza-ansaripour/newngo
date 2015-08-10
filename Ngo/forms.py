@@ -199,19 +199,21 @@ class ChangePasswordForm(forms.ModelForm):
     password2 = forms.CharField(widget=forms.PasswordInput(), label='تکرار')
 
     class Meta:
-        modle = Expert
+        model = Expert
         fields = ['password', 'password1', 'password2']
 
-    def __init__(self, user):
+    def setUser(self, user):
         self.user = user
 
     def clean_password(self):
-        password = self.cleand_data['password']
+        password = self.cleaned_data['password']
         if not self.user.check_password(password):
             raise forms.ValidationError('رمز عبور نادرست است')
+        return password
 
     def clean_password2(self):
-        pass1 = self.cleand_data['password1']
-        pass2 = self.cleand_data['password2']
+        pass1 = self.cleaned_data['password1']
+        pass2 = self.cleaned_data['password2']
         if pass1 != pass2:
             raise forms.ValidationError('رمز عبور و تکرار آن یکی نیست')
+        return pass1

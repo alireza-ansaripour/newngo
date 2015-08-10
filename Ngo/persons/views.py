@@ -5,7 +5,7 @@ from django.utils.crypto import get_random_string
 from django.contrib.auth.decorators import user_passes_test
 import datetime
 
-from Ngo.forms import AddAdmin, AddExpert, Add_ngo, AddPicForm, flagForm
+from Ngo.forms import AddAdmin, AddExpert, Add_ngo, AddPicForm, flagForm, ChangePasswordForm
 from Ngo.news.models import Photo
 from Ngo.news.views import show_NGO
 from Ngo.persons.models import Admin, Expert, NGO
@@ -21,7 +21,7 @@ def add_admin(request):
         if request.method == 'POST':
             form = AddAdmin(request.POST)
             form.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
         else:
             form = AddAdmin()
             return render(request, 'ali.html', {'form': form})
@@ -49,12 +49,12 @@ def add_NGO(request):
         form = Add_ngo(request.POST, request.FILES)
         if form.is_valid():
             ngo = form.save(commit=False)
-            ngo.Website = 'http://176.9.177.17/ngo/'+ngo.latin_name
+            ngo.Website = 'http://127.0.0.1:8000/ngo/'+ngo.latin_name
             photo = ngo.flag
             photo.name = ngo.latin_name + '.jpg'
             ngo.flag = photo
             ngo.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
     else:
         list = NGO.objects.all().order_by('name')
         form = Add_ngo()
@@ -96,3 +96,15 @@ def delete_user(request, username):
         return HttpResponse('deleted')
     except Exception as e:
         return HttpResponse(str(e))
+
+
+@user_passes_test(lambda x: not x.is_superuser and x.is_staff)
+def change_password(request):
+    if request.method == 'POST':
+        form = ChangePasswordForm(request.POST)
+        form.setUser(request.user)
+        if form.is_valid():
+            request.user.set_password(form.cleaned_data['password'])
+    else:
+        form = ChangePasswordForm()
+    return render(request, 'ali.html', {'form': form})
