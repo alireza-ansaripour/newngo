@@ -191,3 +191,27 @@ class country_form(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(history_form, self).__init__(*args, **kwargs)
+
+
+class ChangePasswordForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(), label='رمز کنونی')
+    password1 = forms.CharField(widget=forms.PasswordInput(), label='رمز جدید')
+    password2 = forms.CharField(widget=forms.PasswordInput(), label='تکرار')
+
+    class Meta:
+        modle = Expert
+        fields = ['password', 'password1', 'password2']
+
+    def __init__(self, user):
+        self.user = user
+
+    def clean_password(self):
+        password = self.cleand_data['password']
+        if not self.user.check_password(password):
+            raise forms.ValidationError('رمز عبور نادرست است')
+
+    def clean_password2(self):
+        pass1 = self.cleand_data['password1']
+        pass2 = self.cleand_data['password2']
+        if pass1 != pass2:
+            raise forms.ValidationError('رمز عبور و تکرار آن یکی نیست')
