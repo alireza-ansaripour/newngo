@@ -5,10 +5,11 @@ from django.utils.crypto import get_random_string
 from django.contrib.auth.decorators import user_passes_test
 import datetime
 
-from Ngo.forms import AddAdmin, AddExpert, Add_ngo, AddPicForm, flagForm, ChangePasswordForm
+from Ngo.forms import AddAdmin, AddExpert, Add_ngo, AddPicForm, flagForm, ChangePasswordForm, EditNgoForm
 from Ngo.news.models import Photo
 from Ngo.news.views import show_NGO
 from Ngo.persons.models import Admin, Expert, NGO
+
 
 def user_home(request):
     pass
@@ -21,7 +22,7 @@ def add_admin(request):
         if request.method == 'POST':
             form = AddAdmin(request.POST)
             form.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
         else:
             form = AddAdmin()
             return render(request, 'ali.html', {'form': form})
@@ -49,12 +50,12 @@ def add_NGO(request):
         form = Add_ngo(request.POST, request.FILES)
         if form.is_valid():
             ngo = form.save(commit=False)
-            ngo.Website = 'http://176.9.177.17/ngo/'+ngo.latin_name
+            ngo.Website = 'http://127.0.0.1:8000/ngo/'+ngo.latin_name
             photo = ngo.flag
             photo.name = ngo.latin_name + '.jpg'
             ngo.flag = photo
             ngo.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
     else:
         list = NGO.objects.all().order_by('name')
         form = Add_ngo()
@@ -80,6 +81,7 @@ def add_pic(request):
     return render(request, 'ngo/add_pic.html', {'form': form})
 
 
+@user_passes_test(lambda x: x.is_superuser and x.is_staff)
 def delete_NGO(request, name):
     try:
         ngo = NGO.objects.get(latin_name=name)
@@ -89,6 +91,7 @@ def delete_NGO(request, name):
         return HttpResponse('cannot delete')
 
 
+@user_passes_test(lambda x: x.is_superuser and x.is_staff)
 def delete_user(request, username):
     try:
         user = Expert.objects.get(username=username)
@@ -110,3 +113,21 @@ def change_password(request):
     else:
         form = ChangePasswordForm()
     return render(request, 'change_pass.html', {'form': form})
+
+
+@user_passes_test(lambda x: x.is_superuser)
+def edit_Ngo(request, ngo):
+    if request.method == 'POST':
+        form = EditNgoForm(request.POST)
+        if form.is_valid():
+            ngo = NGO.objects.get(latin_name=ngo)
+            ngo.name = form.cleaned_data['name']
+            ngo.latin_name = form.cleaned_data['latin_name']
+            ngo.continent = form.cleaned_data['continent']
+            pic = form.cleaned_data['flag']
+            pic.name = form.cleaned_data['latin_name'] + '.jpg'
+            ngo.flag = pic
+            ngo.save()
+    else:
+        form = EditNgoForm()
+    return render(request, 'ngo/edit_ngo.html', {'form': form})

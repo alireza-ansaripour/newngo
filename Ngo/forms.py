@@ -217,3 +217,25 @@ class ChangePasswordForm(forms.ModelForm):
         if pass1 != pass2:
             raise forms.ValidationError('رمز عبور و تکرار آن یکی نیست')
         return pass1
+
+
+class EditNgoForm(forms.ModelForm):
+
+    class Meta:
+        model = NGO
+        fields = ['name', 'latin_name', 'continent', 'flag']
+
+    def __init__(self, *args, **kwargs):
+        super(EditNgoForm, self).__init__(*args, **kwargs)
+        self.fields['name'].label = 'نام کشور'
+        self.fields['latin_name'].label = 'نام لاتین کشور'
+        self.fields['continent'].label = 'قاره'
+        for k, field in self.fields.items():
+            if 'required' in field.error_messages:
+                field.error_messages['required'] = 'نباید خالی باشد'
+
+    def clean_latin_name(self):
+        name = self.cleaned_data['latin_name']
+        if not name.isalpha():
+            raise forms.ValidationError('نام را به لاتین وارد کنید')
+        return name
