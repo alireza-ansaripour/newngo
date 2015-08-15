@@ -33,12 +33,10 @@
                                         <div id="{{ ngo.latin_name }}" onclick="delete_ngo('{{ ngo.latin_name }}')" class="col-sm-2 btn btn-danger">
                                             حذف
                                         </div>
-                                        <div class="col-sm-2 btn btn-success">ویرایش</div>
+                                        <div class="col-sm-2 btn btn-success" onclick="edit_ngo('{{ ngo.latin_name }}')">ویرایش</div>
                                         <div class="col-xs-8">{{ ngo.name }}</div>
                                     </a>
-{#                                    <a href="{{ BASE_URL }}/user/delete/{{ ngo.latin_name }}/">#}
-{#                                        {{ ngo }}#}
-{#                                    </a>#}
+{#
                                 </li>
                             {% endfor %}
                         </ul>
@@ -57,6 +55,9 @@
                     }
                 }
             );
+        }
+        function edit_ngo(name){
+            window.location.replace('http://176.9.177.17/user/editngo'+ name +'/');
         }
 
     </script>
