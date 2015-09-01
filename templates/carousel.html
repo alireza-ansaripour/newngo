@@ -25,13 +25,13 @@
             <ol class="carousel-indicators">
 
                 {% set a = 0 %}
-                {% for i in i_news %}
-                    {% if not a %}
+                {% for i in i_news|count %}
+                    {% if not i %}
                          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        {% set a = 1 %}
+
                     {% else %}
-                        <li data-target="#myCarousel" data-slide-to="{{ a }}" class=""></li>
-                        {% set a = 2 %}
+                        <li data-target="#myCarousel" data-slide-to="{{ i }}" class=""></li>
+
                     {% endif %}
                 {% endfor %}
             </ol>

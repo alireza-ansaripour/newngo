@@ -22,7 +22,7 @@ def add_admin(request):
         if request.method == 'POST':
             form = AddAdmin(request.POST)
             form.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
         else:
             form = AddAdmin()
             return render(request, 'ali.html', {'form': form})
@@ -46,16 +46,18 @@ def add_expert(request):
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
 def add_NGO(request):
     list = None
+    if request.method == 'DELETE':
+        pass
     if request.method == 'POST':
         form = Add_ngo(request.POST, request.FILES)
         if form.is_valid():
             ngo = form.save(commit=False)
-            ngo.Website = 'http://176.9.177.17/ngo/'+ngo.latin_name
+            ngo.Website = 'http://127.0.0.1:8000/ngo/'+ngo.latin_name
             photo = ngo.flag
             photo.name = ngo.latin_name + '.jpg'
             ngo.flag = photo
             ngo.save()
-            return redirect('http://176.9.177.17/')
+            return redirect('http://127.0.0.1:8000/')
     else:
         list = NGO.objects.all().order_by('name')
         form = Add_ngo()
@@ -81,7 +83,7 @@ def add_pic(request):
     return render(request, 'ngo/add_pic.html', {'form': form})
 
 
-@user_passes_test(lambda x: x.is_superuser and x.is_staff)
+@user_passes_test(lambda x: x.is_superuser)
 def delete_NGO(request, name):
     try:
         ngo = NGO.objects.get(latin_name=name)
@@ -118,7 +120,7 @@ def change_password(request):
 @user_passes_test(lambda x: x.is_superuser)
 def edit_Ngo(request, ngo):
     if request.method == 'POST':
-        form = EditNgoForm(request.POST)
+        form = EditNgoForm(request.POST, request.FILES)
         if form.is_valid():
             ngo = NGO.objects.get(latin_name=ngo)
             ngo.name = form.cleaned_data['name']
