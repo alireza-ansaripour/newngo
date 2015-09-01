@@ -47,4 +47,16 @@ function send(ngo,request){
         }
     });
 }
+function delete_photo(id){
+     $.ajax({
+        type:"GET",
+        url: "http://176.9.177.17/user/deletephoto/"+id+"/",
+        //processData: false,
+        success: function(msg) {
+            location.reload()
+        }
+    });
+
+}
+
 

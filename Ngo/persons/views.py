@@ -77,10 +77,28 @@ def add_pic(request):
         expert = Expert.objects.get(username=request.user.username)
         photo.ngo = expert.ngo
         photo.save()
-        return show_NGO(request, expert.ngo.latin_name)
+        return redirect('/ngo/'+expert.ngo.latin_name)
 
     form = AddPicForm()
     return render(request, 'ngo/add_pic.html', {'form': form})
+
+
+@user_passes_test(lambda u: u.is_staff, login_url='login')
+def delete_pic(request, id):
+    user = request.user
+    pic = Photo.objects.get(unique_id=id)
+    ngo = pic.ngo
+    experts = ngo.expert_set.all()
+    can_delete = False
+    for expert in experts:
+        if user.username == expert.username:
+            can_delete = True
+
+    if can_delete:
+        pic.delete()
+        return HttpResponse('deleted')
+
+    return HttpResponse('not deleted')
 
 
 @user_passes_test(lambda x: x.is_superuser)

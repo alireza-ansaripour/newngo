@@ -11,4 +11,5 @@ urlpatterns = patterns('Ngo.persons.views',
                        url(r'^user/delete/(\w{1,100})/', 'delete_user'),
                        url(r'^changepass/$', 'change_password'),
                        url(r'^editngo/(\w{1,100})/$', 'edit_Ngo'),
+                       url(r'^deletephoto/(\w{1,100})/$', 'delete_pic'),
 )
