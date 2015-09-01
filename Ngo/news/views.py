@@ -62,9 +62,9 @@ def create_article(request):
             # article.ngo = ngo
             # article.save()
 
-            return redirect('http://127.0.0.1:8000/')
+            return redirect('/')
         else:
-            return redirect('http://127.0.0.1:8000/')
+            return redirect('/')
     else:
         form = AddArticleForm()
     return render(request, 'new_article.html', {'form': form})
@@ -82,7 +82,7 @@ def show_article(request, id):
             comment = form.save(commit=False)
             comment.news = News.objects.get(random_int=id)
             comment.save()
-            return redirect('http://127.0.0.1:8000/article/'+id)
+            return redirect('/article/'+id)
 
     news = News.objects.get(random_int=id)
     # date = persian_date(news)
@@ -121,11 +121,11 @@ def show_news(request):
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
 def delete_news(request, id):
     News.objects.get(random_int=id).delete()
-    return redirect('http://127.0.0.1:8000/editnews/')
+    return redirect('/editnews/')
 
 
 def user_home(request):
-    return redirect('http://127.0.0.1:8000/')
+    return redirect('/')
 
 
 def filter_news(request, continent):
@@ -167,8 +167,8 @@ def request_ngo(request, name, kind):
                 if kind == 'history':
                     ngo.history = text
                 ngo.save()
-                return redirect('http://127.0.0.1:8000/ngo/'+name+'/')
-        return redirect('http://127.0.0.1:8000/login/')
+                return redirect('/ngo/'+name+'/')
+        return redirect('/login/')
 
 
     ngo = NGO.objects.get(latin_name=name)
