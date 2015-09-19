@@ -149,7 +149,6 @@ def show_NGO(request, name):
     return render(request, 'ngo/germany.html', {'page_title': name, 'ngo': ngo, 'r_news': news, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
 
 
-@login_required(login_url='login')
 def request_ngo(request, name, kind):
 
     if request.method == 'POST':
