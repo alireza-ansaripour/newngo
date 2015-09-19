@@ -27,7 +27,7 @@ def home(request):
         news_reverse.append(news)
 
     r_news = news_reverse
-    title = "سایت انجمن دوستی ایران و سهایر کشور ها"
+    title = "پایگاه اینترنتی انجمن های دوستی ایران و سایر کشور ها"
     return render(request, 'home.html', {'i_news': i_news, 'r_news': r_news, 'title': title})
 
 
