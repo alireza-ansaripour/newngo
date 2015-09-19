@@ -11,6 +11,6 @@ urlpatterns = patterns('Ngo.news.views',
                        url(r'editnews/$', 'show_news'),
                        url(r'^accounts/profile/$', 'user_home'),
                        url(r'^news/(\w{1,2})/$', 'filter_news'),
-                       url(r'^ngo/(\w{1,10})/$', 'show_NGO'),
-                       url(r'^ngo/(\w{1,10})/(\w{1,10})/$', 'request_ngo')
+                       url(r'^ngo/(\w{1,100})/$', 'show_NGO'),
+                       url(r'^ngo/(\w{1,100})/(\w{1,10})/$', 'request_ngo')
 )
