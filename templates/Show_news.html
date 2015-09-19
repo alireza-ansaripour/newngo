@@ -111,11 +111,11 @@
                         <input style="float:right;" type="button" class="btn btn-danger" value="حذف">
                         <button style="float: right;" class="btn btn-success" >به روز رسانی</button>
                         <script src="{{ BASE_URL }}/static/js/news.js"></script>
-{#                        <script>#}
-{#                        #}
-{#                            $('#summernote').code('{{ news.text }}');#}
-{#                            $('.note-editable').attr('dir','rtl');#}
-{#                        </script>#}
+                        <script>
+
+                            $('#summernote').code('{{ news.text }}');
+                            $('.note-editable').attr('dir','rtl');
+                        </script>
                     {% endif %}
                 {% endautoescape %}
             </div>
