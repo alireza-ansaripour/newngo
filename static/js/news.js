@@ -2,7 +2,7 @@
  * Created by alireza on 19/09/15.
  */
 $(document).ready(function(){
-
+    $('#summernote').summernote();
     $('button').click(function(){
         var text = $('#summernote').code();
         $.ajax({
