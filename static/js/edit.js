@@ -16,7 +16,7 @@ function send(ngo){
         data:{
             'data':text
         },
-        url: "http://127.0.0.1:8000/ngo/"+ngo+"/country/",
+        url: "http://176.9.177.17/ngo/"+ngo+"/country/",
         //processData: false,
         success: function(msg) {
             alert('اطلاعات به روز شد');
@@ -38,7 +38,7 @@ function send(ngo,request){
 
             'data':text
         },
-        url: "http://127.0.0.1:8000/ngo/"+ngo+"/"+request+"/",
+        url: "http://176.9.177.17/ngo/"+ngo+"/"+request+"/",
         //processData: false,
         success: function(msg) {
             alert('اطلاعات به روز شد');
@@ -50,7 +50,7 @@ function send(ngo,request){
 function delete_photo(id){
      $.ajax({
         type:"GET",
-        url: "http://127.0.0.1:8000/user/deletephoto/"+id+"/",
+        url: "http://176.9.177.17/user/deletephoto/"+id+"/",
         //processData: false,
         success: function(msg) {
             location.reload()

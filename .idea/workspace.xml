@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70b1d31a-00ac-491b-b021-ff95744b351e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/news.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Show_news.html" afterPath="$PROJECT_DIR$/templates/Show_news.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ngo/about.html" afterPath="$PROJECT_DIR$/templates/ngo/about.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ngo/add_pic_modal.html" afterPath="$PROJECT_DIR$/templates/ngo/add_pic_modal.html" />
@@ -18,7 +16,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/navBarList.html" afterPath="$PROJECT_DIR$/templates/navBarList.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ngo/picture.html" afterPath="$PROJECT_DIR$/templates/ngo/picture.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/components/r_news.html" afterPath="$PROJECT_DIR$/templates/components/r_news.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ngo/news/views.py" afterPath="$PROJECT_DIR$/Ngo/news/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ngo/persons/views.py" afterPath="$PROJECT_DIR$/Ngo/persons/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -74,18 +71,28 @@
             <state vertical-scroll-proportion="-0.6666667" vertical-offset="882" max-vertical-offset="2754">
               <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
               <folding>
-                <element signature="e#4727#4748#0#HTML" expanded="true" />
-                <element signature="e#5127#5147#0#HTML" expanded="true" />
-                <element signature="e#5230#5251#0#HTML" expanded="true" />
+                <element signature="e#4713#4734#0#HTML" expanded="true" />
+                <element signature="e#5113#5133#0#HTML" expanded="true" />
+                <element signature="e#5216#5237#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="news.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Ngo/persons/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.22068965" vertical-offset="664" max-vertical-offset="2664">
+              <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="news.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/news.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3776596" vertical-offset="236" max-vertical-offset="666">
+            <state vertical-scroll-proportion="0.0" vertical-offset="86" max-vertical-offset="666">
               <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
@@ -177,10 +184,10 @@
         <option value="$PROJECT_DIR$/templates/ngo/picture.html" />
         <option value="$PROJECT_DIR$/Ngo/news/urls.py" />
         <option value="$PROJECT_DIR$/templates/home.html" />
-        <option value="$PROJECT_DIR$/Ngo/persons/views.py" />
         <option value="$PROJECT_DIR$/templates/Show_news.html" />
         <option value="$PROJECT_DIR$/Ngo/news/views.py" />
         <option value="$PROJECT_DIR$/static/js/news.js" />
+        <option value="$PROJECT_DIR$/Ngo/persons/views.py" />
       </list>
     </option>
   </component>
@@ -829,7 +836,13 @@
       <option name="project" value="LOCAL" />
       <updated>1442646266731</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="delete and edit news">
+      <created>1442681980739</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1442681980739</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -838,11 +851,12 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32676518" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32730263" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32840723" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32840723" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33552632" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33552632" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15789473" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29500756" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32753405" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -851,7 +865,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39048338" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39900663" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -897,7 +910,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="few changes in template" />
     <MESSAGE value="few changes in template2" />
     <MESSAGE value="final submit for now" />
     <MESSAGE value="fix some security errors" />
@@ -922,7 +934,8 @@
     <MESSAGE value="finish delete pic&#10;" />
     <MESSAGE value="home" />
     <MESSAGE value="site title&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="site title&#10;" />
+    <MESSAGE value="delete and edit news" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete and edit news" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1255,14 +1268,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Ngo/persons/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40689656" vertical-offset="556" max-vertical-offset="2664">
-          <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="1944">
@@ -1292,9 +1297,9 @@
         <state vertical-scroll-proportion="-0.6666667" vertical-offset="882" max-vertical-offset="2754">
           <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
           <folding>
-            <element signature="e#4727#4748#0#HTML" expanded="true" />
-            <element signature="e#5127#5147#0#HTML" expanded="true" />
-            <element signature="e#5230#5251#0#HTML" expanded="true" />
+            <element signature="e#4713#4734#0#HTML" expanded="true" />
+            <element signature="e#5113#5133#0#HTML" expanded="true" />
+            <element signature="e#5216#5237#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1324,11 +1329,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/news.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3776596" vertical-offset="236" max-vertical-offset="666">
+        <state vertical-scroll-proportion="0.0" vertical-offset="86" max-vertical-offset="666">
           <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Ngo/persons/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22068965" vertical-offset="664" max-vertical-offset="2664">
+          <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
