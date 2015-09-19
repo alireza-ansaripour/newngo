@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from django.http import HttpResponse
+from django.http import HttpResponse, QueryDict
 from django.shortcuts import render, redirect
 from django.utils.crypto import get_random_string
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -76,20 +76,51 @@ def edit(request):
 
 
 def show_article(request, id):
+    # if request kind is post a comment form is sent
     if request.method == "POST":
         form = comment_form(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.news = News.objects.get(random_int=id)
             comment.save()
-            return redirect('/article/'+id)
+            return redirect('/article/' + id)
+
+    if request.method == "UPDATE":
+        can_edit = False
+        news = News.objects.get(random_int=id)
+        if request.user.is_authenticated():
+            if not request.user.is_superuser:
+                expert = Expert.objects.get(username=request.user.username)
+                if expert.ngo.name == news.ngo.name:
+                    can_edit = True
+
+        if not can_edit:
+            return HttpResponse('not done')
+
+        data = QueryDict(request.body)
+        text = data['text']
+        news.text = text
+        news.save()
+        return HttpResponse('done')
+
+    if request.method == 'DELETE':
+        news = News.objects.get(random_int=id)
+        news.delete()
+        return HttpResponse('done')
 
     news = News.objects.get(random_int=id)
-    # date = persian_date(news)
     form = comment_form()
     title = news.title
     comments = news.comments.all()
-    return render(request, 'Show_news.html', {'news': news, 'form': form, 'title': title, 'comments': comments})
+    ngo = news.ngo
+    can_edit = False
+    if request.user.is_authenticated():
+        if not request.user.is_superuser:
+            expert = Expert.objects.get(username=request.user.username)
+            if ngo == expert.ngo:
+                can_edit = True
+    return render(request, 'Show_news.html',
+                  {'news': news, 'form': form, 'title': title, 'comments': comments, 'can_edit': can_edit})
 
 
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
@@ -117,6 +148,7 @@ def show_news(request):
     r_news = News.get_all_regular_news()
     i_news = News.get_all_important_news()
     return render(request, 'edit_news.html', {'r_news': r_news, 'i_news': i_news})
+
 
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
 def delete_news(request, id):
@@ -146,11 +178,12 @@ def show_NGO(request, name):
                 can_edit = True
     photos = Photo.objects.filter(ngo=ngo)
     title = ngo.name
-    return render(request, 'ngo/germany.html', {'page_title': name, 'ngo': ngo, 'r_news': news, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
+    return render(request, 'ngo/germany.html',
+                  {'page_title': name, 'ngo': ngo, 'r_news': news, 'form': form, 'can_edit': can_edit, 'pics': photos,
+                   'title': title})
 
 
 def request_ngo(request, name, kind):
-
     if request.method == 'POST':
 
         if request.user.is_authenticated():
@@ -166,9 +199,8 @@ def request_ngo(request, name, kind):
                 if kind == 'history':
                     ngo.history = text
                 ngo.save()
-                return redirect('/ngo/'+name+'/')
+                return redirect('/ngo/' + name + '/')
         return redirect('/login/')
-
 
     ngo = NGO.objects.get(latin_name=name)
     photos = Photo.objects.filter(ngo=ngo)
@@ -183,11 +215,13 @@ def request_ngo(request, name, kind):
         text = ngo.about
         form = about_form()
         title = ngo.name
-        return render(request, 'ngo/about.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
+        return render(request, 'ngo/about.html',
+                      {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
     if kind == 'history':
         text = ngo.history
         form = history_form()
         title = ngo.name
-        return render(request, 'ngo/history.html', {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
+        return render(request, 'ngo/history.html',
+                      {'ngo': ngo, 'text': text, 'form': form, 'can_edit': can_edit, 'pics': photos, 'title': title})
 
 

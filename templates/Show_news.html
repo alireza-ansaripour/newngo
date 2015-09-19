@@ -63,14 +63,14 @@
                         <li dir="rtl"><a href="d" style="float: right;">حذف</a></li>
                     </ul>
                 </li>
-                <li><a href="http://176.9.177.17/logout"></span> خروج</a></li>
-                <li><a href="http://176.9.177.17/shownews"></span> اخبار جدید</a></li>
-                <li><a href="http://176.9.177.17/editnews"></span> ویرایش اخبار</a></li>
+                <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
+                <li><a href="http://127.0.0.1:8000/shownews"></span> اخبار جدید</a></li>
+                <li><a href="http://127.0.0.1:8000/editnews"></span> ویرایش اخبار</a></li>
                 {% else %}
-                <li><a href="http://176.9.177.17/ngo/{{ expert.ngo.latin_name }}/">صفحه انجمن</a> </li>
-                <li><a href="http://176.9.177.17/logout"></span> خروج</a></li>
-                <li><a href="http://176.9.177.17/new"></span> اخبار جدید</a></li>
-                <li><a href="http://176.9.177.17/"></span> خانه</a></li>
+                <li><a href="http://127.0.0.1:8000/ngo/{{ expert.ngo.latin_name }}/">صفحه انجمن</a> </li>
+                <li><a href="http://127.0.0.1:8000/logout"></span> خروج</a></li>
+                <li><a href="http://127.0.0.1:8000/new"></span> اخبار جدید</a></li>
+                <li><a href="http://127.0.0.1:8000/"></span> خانه</a></li>
             {% endif %}
     {% endif %}
 {% endblock %}
@@ -84,11 +84,11 @@
 
                 <div class="sidebar mano" width="250" >
                     <ul class="nav nav-sidebar" dir="rtl" id="list">
-                        <li><a href="http://176.9.177.17/news/as">آسیا</a></li>
-                        <li><a href="http://176.9.177.17/news/am">آمریکا</a></li>
-                        <li><a href="http://176.9.177.17/news/eu">اروپا</a></li>
-                        <li><a href="http://176.9.177.17/news/af">آفریقا</a></li>
-                        <li><a href="http://176.9.177.17/news/au">استرالیا و اقیانوسیه</a></li>
+                        <li><a href="{{ BASE_URL }}/news/as">آسیا</a></li>
+                        <li><a href="{{ BASE_URL }}/news/am">آمریکا</a></li>
+                        <li><a href="{{ BASE_URL }}/news/eu">اروپا</a></li>
+                        <li><a href="{{ BASE_URL }}/news/af">آفریقا</a></li>
+                        <li><a href="{{ BASE_URL }}/news/au">استرالیا و اقیانوسیه</a></li>
                         <li><a href="#">قوانین و مقررات</a> </li>
                     </ul>
                 </div>
@@ -103,7 +103,20 @@
                 <h4 style="color: blue;;" dir="rtl">{{ news.title }}</h4>
                 <div dir="rtl">{{ news.date|jalali }}</div>
                 {% autoescape off %}
-                    <div dir="rtl" > {{ news.text }}</div>
+                    {% if not can_edit %}
+                        <div dir="rtl" > {{ news.text }}</div>
+                    {% else %}
+                        <div id="summernote" ></div>
+                        <br>
+                        <input style="float:right;" type="button" class="btn btn-danger" value="حذف">
+                        <button style="float: right;" class="btn btn-success" >به روز رسانی</button>
+                        <script>
+                            $('#summernote').summernote();
+                            $('#summernote').code('{{ news.text }}');
+                            $('.note-editable').attr('dir','rtl');
+                        </script>
+                        <script src="{{ BASE_URL }}/static/js/news.js"></script>
+                    {% endif %}
                 {% endautoescape %}
             </div>
         </div>
@@ -125,7 +138,7 @@
                         </div>
 
                     </form>
-                    <link rel="stylesheet" href="http://176.9.177.17/static/css/news_page.css"/>
+                    <link rel="stylesheet" href="http://127.0.0.1:8000/static/css/news_page.css"/>
                 </div>
             </div>
         </div>

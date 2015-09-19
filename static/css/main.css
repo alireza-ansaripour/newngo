@@ -98,7 +98,7 @@ a{
 
 @font-face {
     font-family: "B Nazanin";
-    src: url(http://176.9.177.17/static/fonts/BNazanin.ttf) format("truetype");
+    src: url(http://127.0.0.1:8000/static/fonts/BNazanin.ttf) format("truetype");
 }
 .navbar  .navbar-header{
     padding-top: 8px;

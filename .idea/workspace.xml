@@ -2,7 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70b1d31a-00ac-491b-b021-ff95744b351e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/news.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Show_news.html" afterPath="$PROJECT_DIR$/templates/Show_news.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ngo/about.html" afterPath="$PROJECT_DIR$/templates/ngo/about.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ngo/add_pic_modal.html" afterPath="$PROJECT_DIR$/templates/ngo/add_pic_modal.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ali.html" afterPath="$PROJECT_DIR$/templates/ali.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/edit.js" afterPath="$PROJECT_DIR$/static/js/edit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ngo/germany.html" afterPath="$PROJECT_DIR$/templates/ngo/germany.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ngo/history.html" afterPath="$PROJECT_DIR$/templates/ngo/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/components/i_news_active.html" afterPath="$PROJECT_DIR$/templates/components/i_news_active.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/main.css" afterPath="$PROJECT_DIR$/static/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ngo/modal.html" afterPath="$PROJECT_DIR$/templates/ngo/modal.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/navBarList.html" afterPath="$PROJECT_DIR$/templates/navBarList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ngo/picture.html" afterPath="$PROJECT_DIR$/templates/ngo/picture.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/components/r_news.html" afterPath="$PROJECT_DIR$/templates/components/r_news.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ngo/news/views.py" afterPath="$PROJECT_DIR$/Ngo/news/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ngo/persons/views.py" afterPath="$PROJECT_DIR$/Ngo/persons/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="newngo.iws" />
@@ -51,43 +68,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <file leaf-file-name="Show_news.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Show_news.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.333333" vertical-offset="0" max-vertical-offset="1944">
-              <caret line="34" column="118" selection-start-line="34" selection-start-column="113" selection-end-line="34" selection-end-column="118" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Ngo/persons/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2844">
-              <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+            <state vertical-scroll-proportion="-0.6666667" vertical-offset="882" max-vertical-offset="2754">
+              <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
               <folding>
-                <element signature="e#0#34#0" expanded="true" />
+                <element signature="e#4727#4748#0#HTML" expanded="true" />
+                <element signature="e#5127#5147#0#HTML" expanded="true" />
+                <element signature="e#5230#5251#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="carousel.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/carousel.html">
+      <file leaf-file-name="news.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/news.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.0" vertical-offset="486" max-vertical-offset="1260">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.3776596" vertical-offset="236" max-vertical-offset="666">
+              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Ngo/news/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82539684" vertical-offset="54" max-vertical-offset="3582">
-              <caret line="29" column="65" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
+            <state vertical-scroll-proportion="-7.448276" vertical-offset="1746" max-vertical-offset="4194">
+              <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
               <folding>
                 <element signature="e#24#33#0" expanded="true" />
               </folding>
@@ -95,11 +106,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="head.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/head.html">
+      <file leaf-file-name="news_news" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/f3a5f395/19f55832-14d5-46e4-8bef-12299b710d2e/..news_news">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="108">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/edit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="414">
-              <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="428" max-vertical-offset="1224">
+              <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -137,7 +163,6 @@
         <option value="$PROJECT_DIR$/templates/head.html" />
         <option value="$PROJECT_DIR$/Ngo/settings.py" />
         <option value="$PROJECT_DIR$/Ngo/templatetags/date.py" />
-        <option value="$PROJECT_DIR$/templates/Show_news.html" />
         <option value="$PROJECT_DIR$/templates/add_user.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/change_pass.html" />
@@ -150,10 +175,12 @@
         <option value="$PROJECT_DIR$/static/js/edit.js" />
         <option value="$PROJECT_DIR$/templates/ngo/modal.html" />
         <option value="$PROJECT_DIR$/templates/ngo/picture.html" />
-        <option value="$PROJECT_DIR$/Ngo/persons/views.py" />
         <option value="$PROJECT_DIR$/Ngo/news/urls.py" />
         <option value="$PROJECT_DIR$/templates/home.html" />
+        <option value="$PROJECT_DIR$/Ngo/persons/views.py" />
+        <option value="$PROJECT_DIR$/templates/Show_news.html" />
         <option value="$PROJECT_DIR$/Ngo/news/views.py" />
+        <option value="$PROJECT_DIR$/static/js/news.js" />
       </list>
     </option>
   </component>
@@ -240,7 +267,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Ngo" />
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ngo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newngo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newngo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newngo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newngo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -255,10 +318,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Ngo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="persons" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -764,7 +823,13 @@
       <option name="project" value="LOCAL" />
       <updated>1442645356412</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="site title&#10;">
+      <created>1442646266731</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1442646266731</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -773,20 +838,20 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32676518" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32730263" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32840723" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32840723" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33552632" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33552632" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15789473" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.290469" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29500756" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32753405" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31907895" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39048338" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39900663" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -832,7 +897,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="fixed error for models.py" />
     <MESSAGE value="few changes in template" />
     <MESSAGE value="few changes in template2" />
     <MESSAGE value="final submit for now" />
@@ -857,41 +921,14 @@
     <MESSAGE value="created delete pic2" />
     <MESSAGE value="finish delete pic&#10;" />
     <MESSAGE value="home" />
-    <option name="LAST_COMMIT_MESSAGE" value="home" />
+    <MESSAGE value="site title&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="site title&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/components/r_news.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32490975" vertical-offset="0" max-vertical-offset="554">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/components/i_news.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="379">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/news_page.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.031034483" vertical-offset="0" max-vertical-offset="580">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/topNews.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63276833" vertical-offset="100" max-vertical-offset="486">
-          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/components/news_item.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10526316" vertical-offset="0" max-vertical-offset="342">
@@ -960,13 +997,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/new_article.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="18" max-vertical-offset="756">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Ngo/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="583">
@@ -1024,13 +1054,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Show_news.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.90018487" vertical-offset="1907" max-vertical-offset="2520">
-          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Ngo/persiandate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
@@ -1042,18 +1065,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2111437" vertical-offset="540" max-vertical-offset="1206">
           <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f3a5f395/19f55832-14d5-46e4-8bef-12299b710d2e/..auth_user">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="108">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1129,20 +1140,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09042553" vertical-offset="848" max-vertical-offset="1224">
-          <caret line="49" column="26" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ngo/germany.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.39926064" vertical-offset="432" max-vertical-offset="1638">
-          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/ngo/modal.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.56561923" vertical-offset="0" max-vertical-offset="541">
@@ -1171,7 +1168,7 @@
         <state vertical-scroll-proportion="0.4787234" vertical-offset="0" max-vertical-offset="450">
           <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="72" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1200,46 +1197,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.333333" vertical-offset="0" max-vertical-offset="1944">
-          <caret line="34" column="118" selection-start-line="34" selection-start-column="113" selection-end-line="34" selection-end-column="118" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/carousel.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0" vertical-offset="486" max-vertical-offset="1260">
+        <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1260">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/head.html">
+    <entry file="file://$PROJECT_DIR$/templates/ngo/germany.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="414">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.6" vertical-offset="648" max-vertical-offset="1638">
+          <caret line="54" column="70" selection-start-line="54" selection-start-column="70" selection-end-line="54" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/components/r_news.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39059675" vertical-offset="0" max-vertical-offset="553">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/new_article.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.06666667" vertical-offset="54" max-vertical-offset="756">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/f3a5f395/19f55832-14d5-46e4-8bef-12299b710d2e/..auth_user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="108">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/f3a5f395/19f55832-14d5-46e4-8bef-12299b710d2e/..persons_expert">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="108">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Ngo/persons/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2844">
-          <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.40689656" vertical-offset="556" max-vertical-offset="2664">
+          <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="1944">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/head.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4556962" vertical-offset="0" max-vertical-offset="553">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/edit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="428" max-vertical-offset="1224">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Show_news.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6666667" vertical-offset="882" max-vertical-offset="2754">
+          <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#4727#4748#0#HTML" expanded="true" />
+            <element signature="e#5127#5147#0#HTML" expanded="true" />
+            <element signature="e#5230#5251#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/f3a5f395/19f55832-14d5-46e4-8bef-12299b710d2e/..news_news">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="108">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Ngo/news/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82539684" vertical-offset="54" max-vertical-offset="3582">
-          <caret line="29" column="65" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
+        <state vertical-scroll-proportion="-7.448276" vertical-offset="1746" max-vertical-offset="4194">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding>
             <element signature="e#24#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/news.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3776596" vertical-offset="236" max-vertical-offset="666">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
           </folding>
         </state>
       </provider>
