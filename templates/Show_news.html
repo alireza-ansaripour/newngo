@@ -112,9 +112,39 @@
                         <button style="float: right;" class="btn btn-success" >به روز رسانی</button>
                         <script src="{{ BASE_URL }}/static/js/news.js"></script>
                         <script>
-
-                            $('#summernote').code('{{ news.text }}');
-                            $('.note-editable').attr('dir','rtl');
+                            $(document).ready(function(){
+                                $('#summernote').summernote();
+                                $('#summernote').code('{{ news.text }}');
+                                $('.note-editable').attr('dir','rtl');
+                                $('button').click(function(){
+                                    var text = $('#summernote').code();
+                                    $.ajax({
+                                        type:'UPDATE',
+                                        data:{
+                                            text:text
+                                        },
+                                        beforeSend: function (request)
+                                        {
+                                            request.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+                                        },
+                                        success:function(data){
+                                            alert(data);
+                                        }
+                                    });
+                                });
+                                $('input').click(function(){
+                                    $.ajax({
+                                        type:'DELETE',
+                                        beforeSend: function (request)
+                                        {
+                                            request.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+                                        },
+                                        success:function(data){
+                                            alert(data);
+                                        }
+                                    });
+                                });
+                            });
                         </script>
                     {% endif %}
                 {% endautoescape %}
