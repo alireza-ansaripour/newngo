@@ -143,6 +143,7 @@ def edit_Ngo(request, ngo):
             ngo = NGO.objects.get(latin_name=ngo)
             ngo.name = form.cleaned_data['name']
             ngo.latin_name = form.cleaned_data['latin_name']
+            ngo.Website = 'http://176.9.177.17/ngo' + ngo.latin_name + '/'
             ngo.continent = form.cleaned_data['continent']
             pic = form.cleaned_data['flag']
             pic.name = form.cleaned_data['latin_name'] + '.jpg'

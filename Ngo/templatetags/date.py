@@ -42,7 +42,7 @@ def persian_date(date):
                 month = 1
                 year += 1
 
-        if day == 31 and month == 12 and year % 1391 ==0:
+        if day == 31 and month == 12 and year % 1391 == 0:
             day = 1
             month = 1
             year += 1
@@ -50,14 +50,8 @@ def persian_date(date):
         days -= 1
     mounths = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
     weekdays = ['دوشنبه', 'سه شنبه', 'چهار شنبه', 'پنج شنبه', 'جمعه', 'شنبه', 'یکشنبه']
-
-    date3 = datetime(year, month, day)
-    output = Output()
-    output.day = str(date3.day)
-    output.month = mounths[date3.month-1]
-    output.year = str(date3.year)
-    output.date = str(weekdays[datetime.today().weekday()])+' '+str(date3.day)+' - '+mounths[date3.month-1]+' - '+str(date3.year)+' '
-    return output.date
+    date = str(weekdays[datetime.today().weekday()])+' '+str(day)+' - '+mounths[month-1]+' - '+str(year)+' '
+    return date
 
 
 # @register.filter(name='j_day')
