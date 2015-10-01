@@ -46,7 +46,7 @@
     </div>
     <script>
         function delete_ngo(name){
-            $.get('http://176.9.177.17/user/delete/'+name+'/',
+            $.get('http://www.irifa.ir/user/delete/'+name+'/',
                 function(data){
                     if(data == "deleted"){
                         parent=$('#'+name).parent()
@@ -56,7 +56,7 @@
             );
         }
         function edit_ngo(name){
-            window.location.replace('http://176.9.177.17/user/editngo/'+ name +'/');
+            window.location.replace('http://www.irifa.ir/user/editngo/'+ name +'/');
         }
 
     </script>

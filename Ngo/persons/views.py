@@ -52,7 +52,7 @@ def add_NGO(request):
         form = Add_ngo(request.POST, request.FILES)
         if form.is_valid():
             ngo = form.save(commit=False)
-            ngo.Website = 'http://176.9.177.17/ngo/'+ngo.latin_name
+            ngo.Website = 'http://www.irifa.ir/ngo/'+ngo.latin_name
             photo = ngo.flag
             photo.name = ngo.latin_name + '.jpg'
             ngo.flag = photo
@@ -143,7 +143,7 @@ def edit_Ngo(request, ngo):
             ngo = NGO.objects.get(latin_name=ngo)
             ngo.name = form.cleaned_data['name']
             ngo.latin_name = form.cleaned_data['latin_name']
-            ngo.Website = 'http://176.9.177.17/ngo' + ngo.latin_name + '/'
+            ngo.Website = 'http://www.irifa.ir/ngo' + ngo.latin_name + '/'
             ngo.continent = form.cleaned_data['continent']
             pic = form.cleaned_data['flag']
             pic.name = form.cleaned_data['latin_name'] + '.jpg'
