@@ -1,5 +1,8 @@
 body{
 }
+#container{
+    width: 80%;
+}
 #news_image{
     float: right;
     height: 100%;
