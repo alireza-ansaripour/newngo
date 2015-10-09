@@ -1,18 +1,37 @@
 {% extends 'base.html' %}
 {% block body %}
     <table border="0" class="col-md-8" id="table">
-            <thead>
-                <tr>
-                    <th>
-                        <div align="right"> اخبار</div>
-                        <img id="line" style="" src="{{BASE_URL}}/static/img/liine3.jpg" alt="">
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for news in n_news %}
-                    {% include 'components/r_news.html' %}
-                {% endfor %}
-            </tbody>
-        </table>
+        <thead>
+            <tr>
+                <th>
+                    <div align="right"> اخبار</div>
+                    <img id="line" style="" src="{{BASE_URL}}/static/img/liine3.jpg" alt="">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for news in n_news %}
+                {% include 'components/r_news.html' %}
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading" id="panel-header"><span class="glyphicon glyphicon-filter"></span><div style="float: right">دسته بندی مطالب</div></div>
+            <div class="panel-body">
+
+                <div class="sidebar mano" width="250" >
+                    <ul class="nav nav-sidebar" dir="rtl" id="list">
+                        <li><a href="news/as">آسیا</a></li>
+                        <li><a href="news/am">آمریکا</a></li>
+                        <li><a href="news/eu">اروپا</a></li>
+                        <li><a href="news/af">آفریقا</a></li>
+                        <li><a href="news/au">استرالیا و اقیانوسیه</a></li>
+                        <li><a href="#">درباره پایگاه اینترنتی</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% include "components/links.html" %}
+    </div>
 {% endblock %}
