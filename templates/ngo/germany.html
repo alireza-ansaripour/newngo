@@ -18,14 +18,15 @@
                         <div>
                             <ul class="nav navbar-nav navbar-right">
                                 {% if  user.is_authenticated %}
+                                    <li><a href="{{ BASE_URL }}/new"></span> اخبار جدید</a></li>
                                     <li><a href="http://www.irifa.ir/logout">خروج</a></li>
                                     {% else %}
-                                    <li><a href="http://www.irifa.ir/login">ورود</a></li>
+                                    <li><a href="{{ BASE_URL }}/login">ورود</a></li>
                                 {% endif %}
-                                <li><a href="http://www.irifa.ir/ngo/{{ ngo.latin_name }}/history">آشنایی با انجمن</a></li>
-                                <li><a href="http://www.irifa.ir/ngo/{{ ngo.latin_name }}/about">ارتباط با انجمن</a></li>
-                                <li><a href="http://www.irifa.ir/ngo/{{ ngo.latin_name }}/">صفحه اصلی</a></li>
-                                <li><a href="http://www.irifa.ir/">خانه</a></li>
+                                <li><a href="{{ BASE_URL }}/ngo/{{ ngo.latin_name }}/history">آشنایی با انجمن</a></li>
+                                <li><a href="{{ BASE_URL }}/ngo/{{ ngo.latin_name }}/about">ارتباط با انجمن</a></li>
+                                <li><a href="{{ BASE_URL }}/ngo/{{ ngo.latin_name }}/">صفحه اصلی</a></li>
+                                <li><a href="{{ BASE_URL }}/">خانه</a></li>
                             </ul>
                         </div>
                 </nav>
