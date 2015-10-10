@@ -243,4 +243,8 @@ class EditNgoForm(forms.ModelForm):
         name = self.cleaned_data['latin_name']
         if not name.isalpha():
             raise forms.ValidationError('نام را به لاتین وارد کنید')
+        number = NGO.objects.filter(latin_name=name).count()
+        if number != 0:
+            raise forms.ValidationError('این نام لاتین را قبلا وارد کرده اید')
+
         return name
