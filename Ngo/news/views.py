@@ -167,7 +167,7 @@ def filter_news(request, continent):
 
 def show_NGO(request, name):
     ngo = NGO.objects.get(latin_name=name)
-    news = News.objects.filter(ngo=ngo)
+    news = News.objects.filter(ngo=ngo)[0:4]
     form = about_form()
     can_edit = False
     if request.user.is_authenticated():
@@ -176,7 +176,7 @@ def show_NGO(request, name):
             ngo_name = expert.get_Ngo().latin_name
             if ngo_name == name:
                 can_edit = True
-    photos = Photo.objects.filter(ngo=ngo)
+    photos = Photo.objects.filter(ngo=ngo)[0:4]
     title = ngo.name
     return render(request, 'ngo/germany.html',
                   {'page_title': name, 'ngo': ngo, 'r_news': news, 'form': form, 'can_edit': can_edit, 'pics': photos,
