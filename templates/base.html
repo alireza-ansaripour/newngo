@@ -2,10 +2,10 @@
 <html lang="en">
     {% load date %}
     {% include 'head.html' %}
-    <body background="http://www.irifa.ir/static/img/gray.jpg">
+    <body background="/static/img/gray.jpg">
         <div class="container" id="container">
             <div class="row">
-                <img src="http://www.irifa.ir/static/img/title_img.jpg" class="img-rounded" alt="Cinque Terre" id="TOP_IMAGE" width="100%" height="150">
+                <img src="/static/img/title_img.jpg" class="img-rounded" alt="Cinque Terre" id="TOP_IMAGE" width="100%" height="150">
             </div>
             <div class="row">
 
@@ -64,19 +64,19 @@
                                                 {% endfor %}
                                             </ul>
                                         </li>
-                                        <li><a href="http://www.irifa.ir/"></span> خانه</a></li>
+                                        <li><a href="/"></span> خانه</a></li>
                                         {% else %}
                                             {% if user.is_superuser %}
-                                                <li><a href="http://www.irifa.ir/logout"></span> خروج</a></li>
-                                                <li><a href="http://www.irifa.ir/shownews"></span> اخبار جدید</a></li>
-                                                <li><a href="http://www.irifa.ir/editnews"></span> ویرایش اخبار</a></li>
-                                                <li><a href="http://www.irifa.ir/user/addexpert"></span> افزودن کارشناس</a></li>
-                                                <li><a href="http://www.irifa.ir/user/addngo"></span>ویرایش انجمن ها</a></li>
+                                                <li><a href="/logout"></span> خروج</a></li>
+                                                <li><a href="/shownews"></span> اخبار جدید</a></li>
+                                                <li><a href="/editnews"></span> ویرایش اخبار</a></li>
+                                                <li><a href="/user/addexpert"></span> افزودن کارشناس</a></li>
+                                                <li><a href="/user/addngo"></span>ویرایش انجمن ها</a></li>
                                                 {% else %}
-                                                <li><a href="http://www.irifa.ir/ngo/{{ expert.ngo.latin_name }}/">صفحه انجمن</a> </li>
-                                                <li><a href="http://www.irifa.ir/logout"></span> خروج</a></li>
-                                                <li><a href="http://www.irifa.ir/new"></span> اخبار جدید</a></li>
-                                                <li><a href="http://www.irifa.ir/"></span> خانه</a></li>
+                                                <li><a href="/ngo/{{ expert.ngo.latin_name }}/">صفحه انجمن</a> </li>
+                                                <li><a href="/logout"></span> خروج</a></li>
+                                                <li><a href="/new"></span> اخبار جدید</a></li>
+                                                <li><a href="/"></span> خانه</a></li>
 
                                             {% endif %}
                                     {% endif %}
@@ -93,7 +93,7 @@
         <footer >
             <div class="col-xs-12" >
                 <p></p>
-                <p><a href="http://www.irifa.ir/login/">ورود اعضا</a> | <a href="#">قوانین</a> </p>
+                <p><a href="/login/">ورود اعضا</a> | <a href="#">قوانین</a> </p>
                 <p>کلیه حقوق این سایت برای پایگاه اینترنتی انجمن دوستی ایران و سایر کشور ها است</p>
             </div>
         </footer>

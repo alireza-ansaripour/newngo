@@ -63,14 +63,14 @@
                         <li dir="rtl"><a href="d" style="float: right;">حذف</a></li>
                     </ul>
                 </li>
-                <li><a href="http://www.irifa.ir/logout"></span> خروج</a></li>
-                <li><a href="http://www.irifa.ir/shownews"></span> اخبار جدید</a></li>
-                <li><a href="http://www.irifa.ir/editnews"></span> ویرایش اخبار</a></li>
+                <li><a href="{{ BASE_URL }}/logout"></span> خروج</a></li>
+                <li><a href="{{ BASE_URL }}/shownews"></span> اخبار جدید</a></li>
+                <li><a href="{{ BASE_URL }}/editnews"></span> ویرایش اخبار</a></li>
                 {% else %}
-                <li><a href="http://www.irifa.ir/ngo/{{ expert.ngo.latin_name }}/">صفحه انجمن</a> </li>
-                <li><a href="http://www.irifa.ir/logout"></span> خروج</a></li>
-                <li><a href="http://www.irifa.ir/new"></span> اخبار جدید</a></li>
-                <li><a href="http://www.irifa.ir/"></span> خانه</a></li>
+                <li><a href="{{ BASE_URL }}/ngo/{{ expert.ngo.latin_name }}/">صفحه انجمن</a> </li>
+                <li><a href="{{ BASE_URL }}/logout"></span> خروج</a></li>
+                <li><a href="{{ BASE_URL }}/new"></span> اخبار جدید</a></li>
+                <li><a href="{{ BASE_URL }}"></span> خانه</a></li>
             {% endif %}
     {% endif %}
 {% endblock %}
@@ -168,7 +168,7 @@
                         </div>
 
                     </form>
-                    <link rel="stylesheet" href="http://www.irifa.ir/static/css/news_page.css"/>
+                    <link rel="stylesheet" href="/static/css/news_page.css"/>
                 </div>
             </div>
         </div>

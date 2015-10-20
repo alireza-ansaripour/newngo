@@ -101,7 +101,7 @@ a{
 
 @font-face {
     font-family: "B Nazanin";
-    src: url(http://www.irifa.ir/static/fonts/BNazanin.ttf) format("truetype");
+    src: url(/static/fonts/BNazanin.ttf) format("truetype");
 }
 .navbar  .navbar-header{
     padding-top: 8px;

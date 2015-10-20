@@ -35,9 +35,6 @@
                                         </div>
                                         <div class="col-xs-8">{{ user.username }} - {{ user.ngo.name }}</div>
                                     </a>
-{#                                    <a href="{{ BASE_URL }}/user/delete/{{ ngo.latin_name }}/">#}
-{#                                        {{ ngo }}#}
-{#                                    </a>#}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -48,11 +45,13 @@
     </div>
     <script>
         function delete_user(name){
-            $.get('{{ BASE_URL }}/user/user/delete/'+name+'/',
+            $.get('/user/user/delete/'+name+'/',
                 function(data){
                     if(data == "deleted"){
-                        parent=$('#'+name).parent()
-                        parent.remove()
+                        parent=$('#'+name).parent();
+                        parent.remove();
+                    }else{
+                        console.log(data);
                     }
                 }
             );
