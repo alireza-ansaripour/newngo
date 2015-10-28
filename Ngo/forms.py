@@ -230,7 +230,8 @@ class EditNgoForm(forms.ModelForm):
         model = NGO
         fields = ['name', 'latin_name', 'continent', 'flag']
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, n, *args, **kwargs):
+        self.NgoName = n['name']
         super(EditNgoForm, self).__init__(*args, **kwargs)
         self.fields['name'].label = 'نام کشور'
         self.fields['latin_name'].label = 'نام لاتین کشور'
@@ -243,8 +244,8 @@ class EditNgoForm(forms.ModelForm):
         name = self.cleaned_data['latin_name']
         if not name.isalpha():
             raise forms.ValidationError('نام را به لاتین وارد کنید')
-        number = NGO.objects.filter(latin_name=name).count()
-        if number != 0:
-            raise forms.ValidationError('این نام لاتین را قبلا وارد کرده اید')
-
+        ngos = NGO.objects.filter(latin_name=name)
+        if len(ngos) != 0:
+            if ngos[0].latin_name != self.NgoName:
+                raise forms.ValidationError('این نام لاتین را قبلا وارد کرده اید')
         return name

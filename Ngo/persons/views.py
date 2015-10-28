@@ -1,3 +1,4 @@
+import os
 from django.core.files import File
 from django.http import HttpResponseNotFound, HttpResponse
 from django.shortcuts import render, redirect
@@ -9,6 +10,7 @@ from Ngo.forms import AddAdmin, AddExpert, Add_ngo, AddPicForm, flagForm, Change
 from Ngo.news.models import Photo
 from Ngo.news.views import show_NGO
 from Ngo.persons.models import Admin, Expert, NGO
+from Ngo.settings import BASE_DIR
 
 
 def user_home(request):
@@ -45,7 +47,7 @@ def add_expert(request):
 
 @user_passes_test(lambda u: u.is_superuser, login_url='login')
 def add_NGO(request):
-    list = None
+    list = NGO.objects.all().order_by('name')
     if request.method == 'DELETE':
         pass
     if request.method == 'POST':
@@ -59,7 +61,6 @@ def add_NGO(request):
             ngo.save()
             return redirect('/')
     else:
-        list = NGO.objects.all().order_by('name')
         form = Add_ngo()
     return render(request, 'ali.html', {'form': form, 'list': list})
 
@@ -138,18 +139,25 @@ def change_password(request):
 @user_passes_test(lambda x: x.is_superuser)
 def edit_Ngo(request, ngo):
     if request.method == 'POST':
-        form = EditNgoForm(request.POST, request.FILES)
+        form = EditNgoForm({'name': ngo}, request.POST, request.FILES)
         if form.is_valid():
             ngo = NGO.objects.get(latin_name=ngo)
             ngo.name = form.cleaned_data['name']
             ngo.latin_name = form.cleaned_data['latin_name']
             ngo.Website = '/ngo/' + ngo.latin_name + '/'
             ngo.continent = form.cleaned_data['continent']
+            pic = ngo.flag
+            try:
+                os.remove(os.path.join(BASE_DIR, "media/flags/", "ansari.jpg"))
+            except Exception as e :
+                print(e)
+
             pic = form.cleaned_data['flag']
             pic.name = form.cleaned_data['latin_name'] + '.jpg'
             ngo.flag = pic
             ngo.save()
             return redirect('/')
     else:
-        form = EditNgoForm()
+        ngo = NGO.objects.get(latin_name=ngo)
+        form = EditNgoForm({'name': ngo.latin_name}, initial={'name': ngo.name, 'latin_name': ngo.latin_name, 'continent': ngo.continent})
     return render(request, 'ngo/edit_ngo.html', {'form': form})
