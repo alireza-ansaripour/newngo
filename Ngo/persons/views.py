@@ -148,7 +148,7 @@ def edit_Ngo(request, ngo):
             ngo.continent = form.cleaned_data['continent']
             pic = ngo.flag
             try:
-                os.remove(os.path.join(BASE_DIR, "media/flags/", "ansari.jpg"))
+                os.remove(os.path.join(BASE_DIR, "media/flags/", ngo.latin_name+".jpg"))
             except Exception as e :
                 print(e)
 

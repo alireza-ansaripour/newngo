@@ -6,8 +6,12 @@ $(document).ready(function(){
             $('.note-editable').attr('dir','rtl');
     });
 
-
+    
 });
+function summernote(){
+    $("#summernote").summernote();
+    $("#submit").css('visibility','visible');
+}
 function send(ngo,request){
     var text = $('#summernote').code();
     $.ajax({
@@ -21,7 +25,7 @@ function send(ngo,request){
 
             'data':text
         },
-        url: request+"/",
+        url: "/",
         //processData: false,
         success: function(msg) {
             alert('اطلاعات به روز شد');
