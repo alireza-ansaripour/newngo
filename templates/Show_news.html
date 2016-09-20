@@ -1,178 +1,58 @@
-{% extends 'base.html' %}
+{% extends 'home.html' %}
 {% load crispy_forms_tags %}
 {% load date %}
-{% block page_title %}{{ news.titel }}{% endblock %}
-{% block nav_list %}
+{% block page_title %}{{ news.title }}{% endblock %}
 
-    {% if not user.is_authenticated %}
-        <li><a href="#"></span> خانه</a></li>
-         <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">آمریکا <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    {% for ngo in america %}
-                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
-                    {% endfor %}
-
-                </ul>
-            </li>
-
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">آسیا <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    {% for ngo in asia %}
-                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}"><div id="title">{{ ngo.name }}</div></a></li>
-                    {% endfor %}
-                </ul>
-            </li>
-
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">اروپا <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    {% for ngo in europe %}
-                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
-                    {% endfor %}
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">آفریقا <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    {% for ngo in africa %}
-                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
-                    {% endfor %}
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">استرالیا و اقیانوسیه<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    {% for ngo in australia %}
-                        <li dir="rtl"><a dir="rtl" href="{{ ngo.Website }}">{{ ngo.name }}</a></li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% else %}
-            {% if user.is_superuser %}
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">دسته بندی <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li ><a dir="rtl" href="i" style="float: right;">مهم</a></li>
-                        <li dir="rtl"><a href="r" style="float: right;">معمولی</a></li>
-                        <li dir="rtl"><a href="d" style="float: right;">حذف</a></li>
-                    </ul>
-                </li>
-                <li><a href="{{ BASE_URL }}/logout"></span> خروج</a></li>
-                <li><a href="{{ BASE_URL }}/shownews"></span> اخبار جدید</a></li>
-                <li><a href="{{ BASE_URL }}/editnews"></span> ویرایش اخبار</a></li>
-                {% else %}
-                <li><a href="{{ BASE_URL }}/ngo/{{ expert.ngo.latin_name }}/">صفحه انجمن</a> </li>
-                <li><a href="{{ BASE_URL }}/logout"></span> خروج</a></li>
-                <li><a href="{{ BASE_URL }}/new"></span> اخبار جدید</a></li>
-                <li><a href="{{ BASE_URL }}"></span> خانه</a></li>
-            {% endif %}
-    {% endif %}
-{% endblock %}
 {% block body %}
-
-    <div class="col-xs-3">
-
-        <div class="panel panel-primary">
-            <div class="panel-heading" id="panel-header"><span class="glyphicon glyphicon-filter"></span><div style="float: right">دسته بندی مطالب</div></div>
-            <div class="panel-body">
-
-                <div class="sidebar mano" width="250" >
-                    <ul class="nav nav-sidebar" dir="rtl" id="list">
-                        <li><a href="{{ BASE_URL }}/news/as">آسیا</a></li>
-                        <li><a href="{{ BASE_URL }}/news/am">آمریکا</a></li>
-                        <li><a href="{{ BASE_URL }}/news/eu">اروپا</a></li>
-                        <li><a href="{{ BASE_URL }}/news/af">آفریقا</a></li>
-                        <li><a href="{{ BASE_URL }}/news/au">استرالیا و اقیانوسیه</a></li>
-                        <li><a href="#">قوانین و مقررات</a> </li>
-                    </ul>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-xs-3">
+            {% include 'components/relatedNews.html' %}
         </div>
-        {% include 'components/links.html' %}
-
-    </div>
-    <div class="col-xs-9">
-        <div class="panel panel-primary" >
-            <div class="panel-body">
-                <h4 style="color: blue;;" dir="rtl">{{ news.title }}</h4>
-                <div dir="rtl">{{ news.date|jalali }}</div>
-                {% autoescape off %}
-                    {% if not can_edit %}
-                        <div dir="rtl" > {{ news.text }}</div>
-                    {% else %}
-                        <div id="summernote" ></div>
-                        <br>
-                        <input style="float:right;" type="button" class="btn btn-danger" value="حذف">
-                        <button style="float: right;" class="btn btn-success" >به روز رسانی</button>
-                        <script src="{{ BASE_URL }}/static/js/news.js"></script>
-                        <script>
-                            $(document).ready(function(){
-                                $('#summernote').summernote();
-                                $('#summernote').code('{{ news.text }}');
-                                $('.note-editable').attr('dir','rtl');
-                                $('button').click(function(){
-                                    var text = $('#summernote').code();
-                                    $.ajax({
-                                        type:'UPDATE',
-                                        data:{
-                                            text:text
-                                        },
-                                        beforeSend: function (request)
-                                        {
-                                            request.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
-                                        },
-                                        success:function(data){
-                                            alert(data);
-                                        }
-                                    });
-                                });
-                                $('input').click(function(){
-                                    $.ajax({
-                                        type:'DELETE',
-                                        beforeSend: function (request)
-                                        {
-                                            request.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
-                                        },
-                                        success:function(data){
-                                            alert(data);
-                                        }
-                                    });
-                                });
-                            });
-                        </script>
-                    {% endif %}
-                {% endautoescape %}
-            </div>
-        </div>
-        {% for comment in comments %}
-            <div class="row"><div class="col-xs-4"></div> <div class="col-xs-8">{% include 'components/message.html' %}</div> </div>
-        {% endfor %}
-        <div class="col-xs-4"></div>
-        <div class="col-xs-8">
-            <div class="panel panel-primary ">
-                <div class="panel-heading" id="panel-header" dir="rtl">نظرسنجی</div>
+        <div class="col-xs-9">
+            <div class="panel panel-primary" >
                 <div class="panel-body">
-                    <form  method="post" action="" dir="rtl">
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                        <div class="row">
-                            <div class="col-xs-5"></div>
-                            <input type="submit" class="btn btn-primary col-xs-2"  value="ثبت" id="submit">
-                            <div class="col-xs-5"></div>
-                        </div>
+                    <div dir="rtl">{{ news.date|jalali }}</div>
+                    {% if not can_edit %}
+                        <h4 style="color: blue;;" dir="rtl">{{ news.title }}</h4>
+                   {% endif %}
+                    {% autoescape off %}
+                        {% if not can_edit %}
+                            <div dir="rtl" > {{ news.text }}</div>
+                        {% else %}
+                            <form action="" method="post" dir="rtl" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ editForm|crispy }}
+                                <input type="submit" class="btn btn-success" value="به روز رسانی">
+                                <input type="button" id="delete" class="btn btn-danger" value="حذف خبر">
+                            </form>
+                            <script>
+                                $(document).ready(function(){
+                                    $('#summernote').summernote();
+                                    $('#summernote').code('{{ news.text }}');
+                                    $('.note-editable').attr('dir','rtl');
+                                    $('#delete').click(function(){
+                                        if(confirm("این عمل غیر قابل بازگشت است. آیا اطمینان دارید ؟"))
+                                            $.ajax({
+                                                type:'DELETE',
+                                                beforeSend: function (request)
+                                                {
+                                                    request.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+                                                },
+                                                success:function(data){
 
-                    </form>
-                    <link rel="stylesheet" href="/static/css/news_page.css"/>
+                                                        window.location="/";
+                                                }
+                                            });
+                                    });
+                                });
+                            </script>
+                        {% endif %}
+                    {% endautoescape %}
                 </div>
             </div>
+            <div class="col-xs-4"></div>
+
         </div>
     </div>
-
 
 {% endblock %}

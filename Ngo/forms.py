@@ -38,6 +38,41 @@ class AddArticleForm(forms.ModelForm):
         fields = ['title', 'description', 'text', 'title_image']
 
 
+class AdminAddArticleForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(AdminAddArticleForm, self).__init__(*args, **kwargs)
+        self.fields['text'].widget.attrs.update({'id': 'summernote'})
+        self.fields['text'].widget.attrs.update({'dir': 'rtl'})
+        self.fields['title'].widget.attrs.update({'dir': 'rtl'})
+        self.fields['description'].label = 'توضیحات'
+        self.fields['title'].label = 'عنوان'
+        self.fields['text'].label = 'متن خبر'
+
+    class Meta:
+        model = News
+        fields = ['title','description', 'text']
+
+
+class EditArticleForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(EditArticleForm, self).__init__(*args, **kwargs)
+        self.fields['text'].widget.attrs.update({'id': 'summernote'})
+        self.fields['text'].widget.attrs.update({'dir': 'rtl'})
+        self.fields['title'].widget.attrs.update({'dir': 'rtl'})
+        self.fields['description'].widget.attrs.update({'dir': 'rtl'})
+        self.fields['title'].label = 'عنوان'
+        self.fields['text'].label = 'متن خبر'
+        self.fields['description'].label = 'توضیحات'
+        self.fields['title_image'].label = 'تصویر عنوان'
+        self.fields['title_image'].required = False
+
+    class Meta:
+        model = News
+        fields = ['title', 'description', 'text', 'title_image']
+
+
 class AddPicForm(forms.ModelForm):
     class Meta:
         model = Photo
@@ -139,14 +174,14 @@ class Add_ngo(forms.ModelForm):
         name = self.cleaned_data['latin_name']
         if not name.isalpha():
             raise forms.ValidationError('نام را به لاتین وارد کنید')
-
+        # try:
+        #     name.decode('ascii')
+        # except UnicodeEncodeError:
+        #     raise forms.ValidationError('نام لاتین را درست وارد کنید')
         number = NGO.objects.filter(latin_name=name).count()
         if number != 0:
             raise forms.ValidationError('این نام لاتین را قبلا وارد کرده اید')
         return name
-
-
-
 
 
 class about_form(forms.ModelForm):
@@ -170,21 +205,20 @@ class history_form(forms.ModelForm):
 
 
 class comment_form(forms.ModelForm):
-
     class Meta:
         model = Comment
         fields = ['name', 'text']
 
     def __init__(self, *args, **kwargs):
-            super(comment_form, self).__init__(*args, **kwargs)
-            self.fields['text'].widget.attrs.update({'dir': 'rtl'})
-            self.fields['name'].widget.attrs.update({'dir': 'rtl'})
-            self.fields['name'].label = 'نام'
-            self.fields['text'].label = 'متن'
+        super(comment_form, self).__init__(*args, **kwargs)
+        self.fields['text'].widget.attrs.update({'dir': 'rtl'})
+        self.fields['name'].widget.attrs.update({'dir': 'rtl'})
+        self.fields['name'].label = 'نام'
+        self.fields['text'].label = 'متن'
 
     def clean_name(self):
         name = self.cleaned_data['name']
-        print('name '+name)
+        print('name ' + name)
         if name == '':
             raise forms.ValidationError('نباید خالی باشد')
 
@@ -225,7 +259,6 @@ class ChangePasswordForm(forms.ModelForm):
 
 
 class EditNgoForm(forms.ModelForm):
-
     class Meta:
         model = NGO
         fields = ['name', 'latin_name', 'continent', 'flag']

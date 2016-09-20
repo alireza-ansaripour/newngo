@@ -21,12 +21,12 @@ class News(models.Model):
     )
     ngo = models.ForeignKey(NGO)
     title = models.CharField(max_length=50)
-    continent = models.CharField(max_length=2, choices=CATEGORIES)
+    continent = models.CharField(max_length=2, choices=CATEGORIES, null=True)
     status = models.CharField(default='n', max_length=1, choices=Categories)
     date = models.DateField(auto_now_add=True)  # have to change to jalali calender
     text = models.TextField()  # It is better for text to be as a text file because the valume of the text is alot
-    description = models.CharField(max_length=100)
-    title_image = models.FileField(upload_to=settings.MEDIA_ROOT)
+    description = models.CharField(max_length=100, null=True)
+    title_image = models.FileField(upload_to=settings.MEDIA_ROOT, null=True)
     random_int = models.CharField(max_length=32)
 
     @classmethod
@@ -34,16 +34,21 @@ class News(models.Model):
         return cls.objects.all()
 
     @classmethod
+    def get_all_related_news(cls):
+        ngo = NGO.objects.get(continent=None)
+        return cls.objects.filter(ngo=ngo).order_by('-date')
+
+    @classmethod
     def get_all_new_news(cls):
-        return cls.objects.filter(status='n')
+        return cls.objects.filter(status='n').order_by('-date')
 
     @classmethod
     def get_all_important_news(cls):
-        return cls.objects.filter(status='i')
+        return cls.objects.filter(status='i').order_by('-date')
 
     @classmethod
     def get_all_regular_news(cls):
-        return cls.objects.filter(status='r')
+        return cls.objects.filter(status='r').order_by('-date')
 
 
 class Comment(models.Model):

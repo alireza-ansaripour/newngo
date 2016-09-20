@@ -17,13 +17,13 @@ class NGO(models.Model):
     def __str__(self):
         return self.latin_name
 
-    continent = models.CharField(max_length=2, choices=CATEGORIES)
+    continent = models.CharField(max_length=2, choices=CATEGORIES, null=True)
     Website = models.CharField(max_length=50)
     latin_name = models.CharField(max_length=20)
     history = models.TextField()
     about = models.TextField()
     country = models.TextField()
-    flag = models.FileField(upload_to=settings.MEDIA_ROOT + '/flags')
+    flag = models.FileField(upload_to=settings.MEDIA_ROOT + '/flags', null=True)
 
 
 class Expert(User):  # karshenas

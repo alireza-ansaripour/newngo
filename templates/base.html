@@ -17,11 +17,23 @@
                             <ul class="nav navbar-nav navbar-right">
                                 {% block nav_list %}
                                     {% if not user.is_authenticated %}
+
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">دسته بندی اخبار<b class="caret"></b></a>
+                                            <ul class="dropdown-menu" dir="rtl">
+                                                <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/news/as"><div id="title">آسیا</div> </a></li>
+                                                <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/news/am"><div id="title">آمریکا</div></a></li>
+                                                <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/news/eu"><div id="title">اروپا</div></a></li>
+                                                <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/news/af"><div id="title">آفریقا</div></a></li>
+                                                <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/news/au"><div id="title">استرالیا و اقیانوسیه</div></a></li>
+                                            </ul>
+                                        </li>
+
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">آمریکا <b class="caret"></b></a>
                                             <ul class="dropdown-menu">
                                                 {% for ngo in america %}
-                                                    <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/ngo/{{ ngo.latin_name }}">{{ ngo.name }}</a></li>
+                                                    <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/ngo/{{ ngo.latin_name }}"><div id="title">{{ ngo.name }}</div></a></li>
                                                 {% endfor %}
 
                                             </ul>
@@ -42,7 +54,7 @@
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">اروپا <b class="caret"></b></a>
                                             <ul class="dropdown-menu">
                                                 {% for ngo in europe %}
-                                                    <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/ngo/{{ ngo.latin_name }}">{{ ngo.name }}</a></li>
+                                                    <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/ngo/{{ ngo.latin_name }}"><div id="title">{{ ngo.name }}</div></a></li>
                                                 {% endfor %}
                                             </ul>
                                         </li>
@@ -51,7 +63,7 @@
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">آفریقا <b class="caret"></b></a>
                                             <ul class="dropdown-menu">
                                                 {% for ngo in africa %}
-                                                    <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/ngo/{{ ngo.latin_name }}">{{ ngo.name }}</a></li>
+                                                    <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/ngo/{{ ngo.latin_name }}"><div id="title">{{ ngo.name }}</div></a></li>
                                                 {% endfor %}
                                             </ul>
                                         </li>
@@ -60,10 +72,13 @@
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">استرالیا و اقیانوسیه<b class="caret"></b></a>
                                             <ul class="dropdown-menu">
                                                 {% for ngo in australia %}
-                                                    <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/ngo/{{ ngo.latin_name }}">{{ ngo.name }}</a></li>
+                                                    <li dir="rtl"><a dir="rtl" href="{{ BASE_URL }}/ngo/{{ ngo.latin_name }}"><div id="title">{{ ngo.name }}</div></a></li>
                                                 {% endfor %}
                                             </ul>
                                         </li>
+
+
+
                                         <li><a href="/"></span> خانه</a></li>
                                         {% else %}
                                             {% if user.is_superuser %}

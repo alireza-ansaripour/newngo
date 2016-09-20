@@ -1,0 +1,12 @@
+<div class="panel panel-primary">
+    <div class="panel-heading" id="panel-header"><span class="glyphicon glyphicon-link"></span><div style="float: right">اخبار مرتبط</div></div>
+    <div class="panel-body">
+        <div class="sidebar mano" width="250" >
+            <ul class="nav nav-sidebar" dir="rtl" id="list">
+                {% for news in related_news %}
+                    <li><a href="{{ BASE_URL }}/article/{{ news.random_int }}"><span class="glyphicon glyphicon-chevron-left"></span> {{ news.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

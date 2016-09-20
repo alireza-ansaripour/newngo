@@ -25,7 +25,7 @@ function send(ngo,request){
 
             'data':text
         },
-        url: "/",
+        url: "/ngo/"+ngo+"/"+request+"/",
         //processData: false,
         success: function(msg) {
             alert('اطلاعات به روز شد');
